@@ -27,7 +27,6 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// movement();
 	}
 
 	public void Move(int turn){
@@ -35,6 +34,7 @@ public class Player : MonoBehaviour {
 			Application.LoadLevel("Winner");
 		else
 			transform.SetPositionAndRotation(new Vector3(transform.position.x+(7*turn),transform.position.y,0),new Quaternion(0,0,0,0));
+			MainGame.Turn="whatever";
 
 		//Horizontal
 		// float x= Input.GetAxis("Horizontal");
@@ -52,7 +52,6 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collision){
-		MainGame.Following=gameObject.tag;
 		if (collision.gameObject.tag=="Floor")
 			Floor.GetEvent(gameObject.tag);
 		else if(collision.gameObject.tag=="FinalFloor")

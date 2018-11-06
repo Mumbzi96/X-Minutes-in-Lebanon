@@ -14,11 +14,26 @@ public class MainGame : MonoBehaviour {
 	public Text player1score;
 	public Text player2score;
 	public Text timeText;
+	public Text diceRollText;
 	//UI helpers
 	private float time;
 	//Static values
-	public static string Following="Player2";
 	public static int tileNumbers=20;
+	
+	public static int Players = 2;
+	public static int turn = 1;
+	public static string Turn{
+		get{
+			return "Player"+turn;
+		}
+		set{
+			turn++;
+			if (turn>Players){
+				turn=1;
+			}
+		}
+	}
+	
 
 	
 	// Use this for initialization
@@ -27,7 +42,7 @@ public class MainGame : MonoBehaviour {
 		AddPlayers();
 		player1.tag="Player1";
 		player2.tag="Player2";
-		InvokeRepeating("StartSimulation",2,2);
+		// InvokeRepeating("StartSimulation",2,2);
 
 	}
 	
@@ -36,10 +51,20 @@ public class MainGame : MonoBehaviour {
 		Timer();
 		Scores();
 		CameraFollow();
+		Turns();
 
 	}
+	void Turns(){
+		if (Input.GetKeyUp(KeyCode.Space)){
+			GameObject player= GameObject.FindWithTag(Turn);
+			int turn=Random.Range(1,6);
+			diceRollText.text=Turn+"'s Roll: "+turn.ToString();
+			player.GetComponent<Player>().Move(turn);
+		}
+	}
+
 	void CameraFollow(){
-		GameObject something= GameObject.FindWithTag(Following);
+		GameObject something= GameObject.FindWithTag(Turn);
 		Vector3 pos=something.transform.position;
 		transform.SetPositionAndRotation(new Vector3(pos.x,pos.y,-10),new Quaternion(0,0,0,0));
 	}
@@ -84,10 +109,7 @@ public class MainGame : MonoBehaviour {
 		time=Time.time;
 		string minutes = ((int)time/60).ToString();
 		string seconds = ((int)time%60).ToString();
-		if(time>=20)
-			timeText.text="GAME OVER!";
-		else
-			timeText.text=minutes + ":" +seconds;
+		timeText.text=minutes + ":" +seconds;
 	}
 
 	void StartSimulation(){
