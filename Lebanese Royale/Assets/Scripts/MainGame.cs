@@ -47,9 +47,6 @@ public class MainGame : MonoBehaviour {
 		// InvokeRepeating("StartSimulation",2,2);
 
 	}
-	void onGUI(){
-		GUI.Label(new Rect(10, 10, 150, 100), "I am a button");
-	}
 
 	void AddFloors(){
 		//Position numba wan
