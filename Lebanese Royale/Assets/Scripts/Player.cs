@@ -19,7 +19,9 @@ public class Player : MonoBehaviour {
     }
 	// public float speed=15;
 	// private Rigidbody2D rb2d;
-
+	void Awake(){
+		DontDestroyOnLoad(gameObject);
+	}
 	// Use this for initialization
 	void Start () {
 		// rb2d = gameObject.GetComponent<Rigidbody2D>();
@@ -31,7 +33,7 @@ public class Player : MonoBehaviour {
 
 	public void Move(int turn){
 		if (transform.position.x>(7*MainGame.tileNumbers))
-			Application.LoadLevel("Winner");
+		MainGame.SetWinner();
 		else
 			transform.SetPositionAndRotation(new Vector3(transform.position.x+(7*turn),transform.position.y,0),new Quaternion(0,0,0,0));
 			MainGame.Turn="whatever";

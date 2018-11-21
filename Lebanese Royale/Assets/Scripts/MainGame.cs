@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainGame : MonoBehaviour {
 	//Object to instantiate at start
@@ -19,7 +20,6 @@ public class MainGame : MonoBehaviour {
 	private float time;
 	//Static values
 	public static int tileNumbers=20;
-	
 	public static int Players = 2;
 	public static int turn = 1;
 	public static string Turn{
@@ -33,8 +33,8 @@ public class MainGame : MonoBehaviour {
 			}
 		}
 	}
-	
-
+	void Awake(){
+	}
 	
 	// Use this for initialization
 	void Start () {
@@ -44,29 +44,6 @@ public class MainGame : MonoBehaviour {
 		player2.tag="Player2";
 		// InvokeRepeating("StartSimulation",2,2);
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		Timer();
-		Scores();
-		CameraFollow();
-		Turns();
-
-	}
-	void Turns(){
-		if (Input.GetKeyUp(KeyCode.Space)){
-			GameObject player= GameObject.FindWithTag(Turn);
-			int turn=Random.Range(1,6);
-			diceRollText.text=Turn+"'s Roll: "+turn.ToString();
-			player.GetComponent<Player>().Move(turn);
-		}
-	}
-
-	void CameraFollow(){
-		GameObject something= GameObject.FindWithTag(Turn);
-		Vector3 pos=something.transform.position;
-		transform.SetPositionAndRotation(new Vector3(pos.x,pos.y,-10),new Quaternion(0,0,0,0));
 	}
 
 	void AddFloors(){
@@ -97,20 +74,6 @@ public class MainGame : MonoBehaviour {
 		Debug.Log("Added players");
 
 	}
-	void Scores(){
-		GameObject player1t= GameObject.FindWithTag("Player1");
-		GameObject player2t= GameObject.FindWithTag("Player2");
-		player1score.text="Player1: "+player1t.GetComponent<Player>().points.ToString();
-		player2score.text="Player2: "+player2t.GetComponent<Player>().points.ToString();
-
-	}
-	
-	void Timer(){
-		time=Time.time;
-		string minutes = ((int)time/60).ToString();
-		string seconds = ((int)time%60).ToString();
-		timeText.text=minutes + ":" +seconds;
-	}
 
 	void StartSimulation(){
 		GameObject player1t= GameObject.FindWithTag("Player1");
@@ -120,5 +83,45 @@ public class MainGame : MonoBehaviour {
 		turn=Random.Range(1,6);
 		player2t.GetComponent<Player>().Move(turn);
 		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		Timer();
+		Scores();
+		CameraFollow();
+		Turns();
+	}
+	// Mainly text updates
+	void Timer(){
+		time=Time.time;
+		string minutes = ((int)time/60).ToString();
+		string seconds = ((int)time%60).ToString();
+		timeText.text=minutes + ":" +seconds;
+	}
+	void Scores(){
+		GameObject player1t= GameObject.FindWithTag("Player1");
+		GameObject player2t= GameObject.FindWithTag("Player2");
+		player1score.text="Player1: "+player1t.GetComponent<Player>().points.ToString();
+		player2score.text="Player2: "+player2t.GetComponent<Player>().points.ToString();
+	}
+	// Mainly updates with a button click 
+	void Turns(){
+		if (Input.GetKeyUp(KeyCode.Space)){
+			GameObject player= GameObject.FindWithTag(Turn);
+			int turn=Random.Range(1,6);
+			diceRollText.text=Turn+"'s Roll: "+turn.ToString();
+			player.GetComponent<Player>().Move(turn);
+		}
+	}
+	void CameraFollow(){
+		GameObject something= GameObject.FindWithTag(Turn);
+		Vector3 pos=something.transform.position;
+		transform.SetPositionAndRotation(new Vector3(pos.x,pos.y,-10),new Quaternion(0,0,0,0));
+	}
+
+	// Other
+	public static void SetWinner(){
+		SceneManager.LoadScene("Winner");
 	}
 }
