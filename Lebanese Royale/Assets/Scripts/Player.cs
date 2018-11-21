@@ -33,7 +33,7 @@ public class Player : MonoBehaviour {
 
 	public void Move(int turn){
 		if (transform.position.x>(7*MainGame.tileNumbers))
-		MainGame.SetWinner();
+			MainGame.SetWinner(gameObject.tag);
 		else
 			transform.SetPositionAndRotation(new Vector3(transform.position.x+(7*turn),transform.position.y,0),new Quaternion(0,0,0,0));
 			MainGame.Turn="whatever";
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour {
 		if (collision.gameObject.tag=="Floor")
 			Floor.GetEvent(gameObject.tag);
 		else if(collision.gameObject.tag=="FinalFloor")
-			Application.LoadLevel("Winner");
+			MainGame.SetWinner(gameObject.tag);
 	}
 
 }
