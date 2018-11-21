@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class MainGame : MonoBehaviour {
 	//Object to instantiate at start
@@ -44,6 +46,9 @@ public class MainGame : MonoBehaviour {
 		player2.tag="Player2";
 		// InvokeRepeating("StartSimulation",2,2);
 
+	}
+	void onGUI(){
+		GUI.Label(new Rect(10, 10, 150, 100), "I am a button");
 	}
 
 	void AddFloors(){
@@ -120,8 +125,37 @@ public class MainGame : MonoBehaviour {
 		transform.SetPositionAndRotation(new Vector3(pos.x,pos.y,-10),new Quaternion(0,0,0,0));
 	}
 
-	// Other
-	public static void SetWinner(){
-		SceneManager.LoadScene("Winner");
+	// Statics
+	public static void SetWinner(string winner){
+		Debug.Log(winner);
+		Save(winner);
+		Application.LoadLevel("Winner");
+		// SceneManager.LoadScene("Winner");
 	}
+	public static void Save(string winner){
+		BinaryFormatter bf = new BinaryFormatter();
+		FileStream file = File.Create(Application.persistentDataPath+"/winner.dat");
+		
+		PlayerData data = new PlayerData();
+		data.winner=winner;
+		bf.Serialize(file,data);
+		file.Close();
+	}
+	public static string Load(){
+		if (File.Exists(Application.persistentDataPath+"/winner.dat")){
+			BinaryFormatter bf = new BinaryFormatter();
+			FileStream file = File.Open(Application.persistentDataPath+"/winner.dat", FileMode.Open);
+			PlayerData data = (PlayerData)bf.Deserialize(file);
+			file.Close();
+			string winner = data.winner;
+			return winner;
+		}
+		else return "0";
+	}
+	
+}
+
+[System.Serializable]
+class PlayerData{
+	public string winner;
 }
