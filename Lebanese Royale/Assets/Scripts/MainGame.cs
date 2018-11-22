@@ -59,14 +59,26 @@ public class MainGame : MonoBehaviour {
 		pos.Set(newX,pos.y,0);
 		//Add event Floors
 		for (int i=0;i<tileNumbers;i++){
-			if(i%3==0&&i!=0){
-				FloorObject.tag="DirectionFloor";
+			if(i==2&&i!=0){
+				FloorObject.tag="GoDown";
 				Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
 				newY=pos.y -7;
 				pos.Set(pos.x,newY,0);
 			}
+			else if(i==5&&i!=0){
+				FloorObject.tag="GoUp";
+				Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
+				newY=pos.y +7;
+				pos.Set(pos.x,newY,0);
+			}
+			// else if(i==6&&i!=0){
+			// 	FloorObject.tag="GoLeft";
+			// 	Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
+			// 	newX=pos.x -7;
+			// 	pos.Set(newX,pos.y,0);;
+			// }
 			else{
-				FloorObject.tag="Floor";
+				FloorObject.tag="GoRight";
 				Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
 				newX=pos.x +7;
 				pos.Set(newX,pos.y,0);
