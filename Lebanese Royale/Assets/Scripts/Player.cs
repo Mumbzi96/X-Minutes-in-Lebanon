@@ -31,12 +31,14 @@ public class Player : MonoBehaviour {
 	void Update () {
 	}
 
-	public void Move(int turn){
+	public void Move(int turn,string direction){
 		if (transform.position.x>(7*MainGame.tileNumbers))
 			MainGame.SetWinner(gameObject.tag);
-		else
-			transform.SetPositionAndRotation(new Vector3(transform.position.x+(7*turn),transform.position.y,0),new Quaternion(0,0,0,0));
-			MainGame.Turn="whatever";
+		else{
+			MainGame.InputEnabled=false;
+			StartCoroutine(MoveIt( turn, direction));
+		}
+		MainGame.Turn="whatever";
 
 		//Horizontal
 		// float x= Input.GetAxis("Horizontal");
@@ -52,12 +54,33 @@ public class Player : MonoBehaviour {
 		// 	gameObject.transform.Translate(nv3*speed*Time.deltaTime);
 		// }
 	}
+	public IEnumerator MoveIt(int turn,string direction){
+		if(direction=="Down"){
+			for(int i=1;i<=turn;i++){
+				transform.SetPositionAndRotation(new Vector3(transform.position.x,transform.position.y-(7*i),0),new Quaternion(0,0,0,0));
+			}
+		}
+		else
+			for(int i=1;i<=turn;i++){
+				transform.SetPositionAndRotation(new Vector3(transform.position.x+(7),transform.position.y,0),new Quaternion(0,0,0,0));
+				 yield return new WaitForSeconds(1f);
+			}
+		MainGame.InputEnabled=true;
+	}
+
 
 	void OnCollisionEnter2D(Collision2D collision){
-		if (collision.gameObject.tag=="Floor")
+		// Make this a switch
+		if (collision.gameObject.tag=="Floor"){
 			Floor.GetEvent(gameObject.tag);
+		}
 		else if(collision.gameObject.tag=="FinalFloor")
 			MainGame.SetWinner(gameObject.tag);
+		else if(collision.gameObject.tag=="DirectionFloor"){
+			Move(1,"Down");
+		}
+			
+
 	}
 
 }

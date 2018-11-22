@@ -11,6 +11,7 @@ TagManager:
   - Undefined
   - Floor
   - Startend
+  - DirectionFloor
   layers:
   - Default
   - TransparentFX
