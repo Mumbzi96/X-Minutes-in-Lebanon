@@ -21,6 +21,7 @@ public class MainGame : MonoBehaviour {
 	//UI helpers
 	private float time;
 	//Static values
+	public static bool InputEnabled= true;
 	public static int tileNumbers=20;
 	public static int Players = 2;
 	public static int turn = 1;
@@ -54,12 +55,23 @@ public class MainGame : MonoBehaviour {
 		//Add start Floor
 		Instantiate(StartFloor,pos,new Quaternion(0,0,0,0));
 		float newX=pos.x +7;
+		float newY=0;
 		pos.Set(newX,pos.y,0);
 		//Add event Floors
 		for (int i=0;i<tileNumbers;i++){
-			Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
-			newX=pos.x +7;
-			pos.Set(newX,pos.y,0);
+			if(i%3==0&&i!=0){
+				FloorObject.tag="DirectionFloor";
+				Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
+				newY=pos.y -7;
+				pos.Set(pos.x,newY,0);
+			}
+			else{
+				FloorObject.tag="Floor";
+				Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
+				newX=pos.x +7;
+				pos.Set(newX,pos.y,0);
+			}
+			
 		}
 		//Final Map Position
 		Instantiate(FinalFloor,pos,new Quaternion(0,0,0,0));
@@ -81,9 +93,9 @@ public class MainGame : MonoBehaviour {
 		GameObject player1t= GameObject.FindWithTag("Player1");
 		GameObject player2t= GameObject.FindWithTag("Player2");
 		int turn=Random.Range(1,6);
-		player1t.GetComponent<Player>().Move(turn);
+		player1t.GetComponent<Player>().Move(turn,"Right");
 		turn=Random.Range(1,6);
-		player2t.GetComponent<Player>().Move(turn);
+		player2t.GetComponent<Player>().Move(turn,"Right");
 		
 	}
 	
@@ -92,7 +104,9 @@ public class MainGame : MonoBehaviour {
 		Timer();
 		Scores();
 		CameraFollow();
-		Turns();
+		if(InputEnabled==true){
+			Turns();
+		}
 	}
 	// Mainly text updates
 	void Timer(){
@@ -113,7 +127,7 @@ public class MainGame : MonoBehaviour {
 			GameObject player= GameObject.FindWithTag(Turn);
 			int turn=Random.Range(1,6);
 			diceRollText.text=Turn+"'s Roll: "+turn.ToString();
-			player.GetComponent<Player>().Move(turn);
+			player.GetComponent<Player>().Move(turn,"Right");
 		}
 	}
 	void CameraFollow(){
