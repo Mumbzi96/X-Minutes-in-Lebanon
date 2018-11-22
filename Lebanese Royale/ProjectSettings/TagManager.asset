@@ -9,9 +9,11 @@ TagManager:
   - FinalFloor
   - StartFloor
   - Undefined
-  - Floor
   - Startend
-  - DirectionFloor
+  - GoRight
+  - GoLeft
+  - GoUp
+  - GoDown
   layers:
   - Default
   - TransparentFX
