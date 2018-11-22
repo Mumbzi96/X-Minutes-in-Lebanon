@@ -107,6 +107,7 @@ public class MainGame : MonoBehaviour {
 		if(InputEnabled==true){
 			Turns();
 		}
+		
 	}
 	// Mainly text updates
 	void Timer(){
