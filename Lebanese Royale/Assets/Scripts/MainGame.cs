@@ -36,11 +36,15 @@ public class MainGame : MonoBehaviour {
 			}
 		}
 	}
+	
+
+	//Functions START HERE
 	void Awake(){
 	}
 	
 	// Use this for initialization
 	void Start () {
+		SoundEffectsHelper.Instance.MakeButtonPressSound();
 		AddFloors();
 		AddPlayers();
 		player1.tag="Player1";
@@ -177,7 +181,6 @@ public class MainGame : MonoBehaviour {
 		}
 		else return "0";
 	}
-	
 }
 
 [System.Serializable]

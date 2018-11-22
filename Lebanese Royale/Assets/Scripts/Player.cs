@@ -78,6 +78,7 @@ public class Player : MonoBehaviour {
 		}
 		MainGame.InputEnabled=true;
 		MainGame.Turn="whatever";
+		SoundEffectsHelper.Instance.MakeTurnSound();
 
 	}
 
