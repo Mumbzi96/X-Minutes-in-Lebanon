@@ -20,7 +20,6 @@ public class Player : MonoBehaviour {
 	// public float speed=15;
 	// private Rigidbody2D rb2d;
 	void Awake(){
-		DontDestroyOnLoad(gameObject);
 	}
 	// Use this for initialization
 	void Start () {

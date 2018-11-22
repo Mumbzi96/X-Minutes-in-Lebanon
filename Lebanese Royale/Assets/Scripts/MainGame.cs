@@ -45,6 +45,7 @@ public class MainGame : MonoBehaviour {
 		AddPlayers();
 		player1.tag="Player1";
 		player2.tag="Player2";
+		InputEnabled= true;
 		// InvokeRepeating("StartSimulation",2,2);
 
 	}
