@@ -38,7 +38,6 @@ public class Player : MonoBehaviour {
 			MainGame.InputEnabled=false;
 			StartCoroutine(MoveIt( turn, direction));
 		}
-		MainGame.Turn="whatever";
 
 		//Horizontal
 		// float x= Input.GetAxis("Horizontal");
@@ -55,32 +54,43 @@ public class Player : MonoBehaviour {
 		// }
 	}
 	public IEnumerator MoveIt(int turn,string direction){
-		if(direction=="Down"){
+		if(direction=="Left")
 			for(int i=1;i<=turn;i++){
-				transform.SetPositionAndRotation(new Vector3(transform.position.x,transform.position.y-(7*i),0),new Quaternion(0,0,0,0));
+				transform.SetPositionAndRotation(new Vector3(transform.position.x-(7),transform.position.y,0),new Quaternion(0,0,0,0));
+				 yield return new WaitForSeconds(1f);
+			}
+		else if(direction=="Up"){
+			for(int i=1;i<=turn;i++){
+				transform.SetPositionAndRotation(new Vector3(transform.position.x,transform.position.y+(7*i),0),new Quaternion(0,0,0,0));
+				yield return new WaitForSeconds(1f);
 			}
 		}
-		else
+		else if(direction=="Right"){
 			for(int i=1;i<=turn;i++){
 				transform.SetPositionAndRotation(new Vector3(transform.position.x+(7),transform.position.y,0),new Quaternion(0,0,0,0));
 				 yield return new WaitForSeconds(1f);
 			}
+		}
+		else if(direction=="Down"){
+			for(int i=1;i<=turn;i++){
+				transform.SetPositionAndRotation(new Vector3(transform.position.x,transform.position.y-(7*i),0),new Quaternion(0,0,0,0));
+				yield return new WaitForSeconds(1f);
+			}
+		}
 		MainGame.InputEnabled=true;
+		MainGame.Turn="whatever";
+
 	}
 
 
 	void OnCollisionEnter2D(Collision2D collision){
-		// Make this a switch
-		if (collision.gameObject.tag=="Floor"){
-			Floor.GetEvent(gameObject.tag);
+		switch(collision.gameObject.tag){
+			case "FinalFloor":MainGame.SetWinner(gameObject.tag);break;
+			case "GoLeft":Floor.GetEvent(gameObject.tag);Move(1,"Left");break;
+			case "GoUp":Floor.GetEvent(gameObject.tag);Move(1,"Up");break;
+			// case "GoRight":Floor.GetEvent(gameObject.tag);Move(1,"Right");break;
+			case "GoDown":Floor.GetEvent(gameObject.tag);Move(1,"Down");break;
 		}
-		else if(collision.gameObject.tag=="FinalFloor")
-			MainGame.SetWinner(gameObject.tag);
-		else if(collision.gameObject.tag=="DirectionFloor"){
-			Move(1,"Down");
-		}
-			
-
 	}
 
 }
