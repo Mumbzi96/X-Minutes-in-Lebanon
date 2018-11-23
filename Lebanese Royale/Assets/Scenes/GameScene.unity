@@ -443,6 +443,26 @@ Prefab:
       propertyPath: m_Text
       value: 'Roll: '
       objectReference: {fileID: 0}
+    - target: {fileID: 114765621085064612, guid: 224d3931d39f0e84f866b4d993f379a5,
+        type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114512899204810816, guid: 224d3931d39f0e84f866b4d993f379a5,
+        type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114534439511783898, guid: 224d3931d39f0e84f866b4d993f379a5,
+        type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114149608053221714, guid: 224d3931d39f0e84f866b4d993f379a5,
+        type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 224d3931d39f0e84f866b4d993f379a5, type: 2}
   m_IsPrefabAsset: 0
