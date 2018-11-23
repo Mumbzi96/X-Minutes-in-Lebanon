@@ -18,6 +18,7 @@ public class MainGame : MonoBehaviour {
 	public Text player2score;
 	public Text timeText;
 	public Text diceRollText;
+	public Text playerTurn;
 	//UI helpers
 	private float time;
 	//Static values
@@ -131,8 +132,10 @@ public class MainGame : MonoBehaviour {
 		timeText.text=minutes + ":" +seconds;
 	}
 	void Scores(){
+		GameObject turnT= GameObject.FindWithTag(Turn);
 		GameObject player1t= GameObject.FindWithTag("Player1");
 		GameObject player2t= GameObject.FindWithTag("Player2");
+		playerTurn.text=Turn;
 		player1score.text="Player1: "+player1t.GetComponent<Player>().points.ToString();
 		player2score.text="Player2: "+player2t.GetComponent<Player>().points.ToString();
 	}
@@ -141,7 +144,8 @@ public class MainGame : MonoBehaviour {
 		if (Input.GetKeyUp(KeyCode.Space)){
 			GameObject player= GameObject.FindWithTag(Turn);
 			int turn=Random.Range(1,6);
-			diceRollText.text=Turn+"'s Roll: "+turn.ToString();
+			// diceRollText.text=Turn+"'s Roll: "+turn.ToString();
+			diceRollText.text="Roll: "+turn.ToString();
 			player.GetComponent<Player>().Move(turn,"Right");
 		}
 	}
