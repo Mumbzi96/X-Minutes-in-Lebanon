@@ -24,7 +24,7 @@ public class MainGame : MonoBehaviour {
 	public static bool InputEnabled= true;
 	public static int tileNumbers=20;
 	public static int Players = 2;
-	public static int turn = 1;
+	private static int turn = 1;
 	public static string Turn{
 		get{
 			return "Player"+turn;
@@ -39,10 +39,7 @@ public class MainGame : MonoBehaviour {
 	
 
 	//Functions START HERE
-	void Awake(){
-	}
 	
-	// Use this for initialization
 	void Start () {
 		SoundEffectsHelper.Instance.MakeButtonPressSound();
 		AddFloors();
