@@ -49,20 +49,20 @@ public class Player : MonoBehaviour {
 				yield return new WaitForSeconds(1f);
 			}
 		}
-		MainGame.InputEnabled=true;
-		MainGame.Turn="whatever";
 		SoundEffectsHelper.Instance.MakeTurnSound();
+		MainGame.Turn="whatever";
+		MainGame.InputEnabled=true;
+		MainEvents.GetEvent(gameObject.tag);
 
 	}
 
 	void OnCollisionEnter2D(Collision2D collision){
 		switch(collision.gameObject.tag){
 			case "FinalFloor":MainGame.SetWinner(gameObject.tag);break;
-			case "GoLeft":Floor.GetEvent(gameObject.tag);Move(1,"Left");break;
-			case "GoUp":Floor.GetEvent(gameObject.tag);Move(1,"Up");break;
-			// case "GoRight":Floor.GetEvent(gameObject.tag);Move(1,"Right");break;
-			case "GoDown":Floor.GetEvent(gameObject.tag);Move(1,"Down");break;
+			case "GoLeft":Move(1,"Left" );break;
+			case "GoUp":Move(1,"Up");break;
+			// case "GoRight":;break;
+			case "GoDown":Move(1,"Down");break;
 		}
 	}
-
 }

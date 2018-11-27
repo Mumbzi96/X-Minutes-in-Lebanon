@@ -144,7 +144,6 @@ public class MainGame : MonoBehaviour {
 		if (Input.GetKeyUp(KeyCode.Space)){
 			GameObject player= GameObject.FindWithTag(Turn);
 			int turn=Random.Range(1,6);
-			// diceRollText.text=Turn+"'s Roll: "+turn.ToString();
 			diceRollText.text="Roll: "+turn.ToString();
 			player.GetComponent<Player>().Move(turn,"Right");
 		}
