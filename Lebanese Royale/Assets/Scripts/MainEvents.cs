@@ -5,7 +5,9 @@ using UnityEngine;
 public class MainEvents : MonoBehaviour {
 
 	static string[] eventList= new string[11];
-	// int eventType;
+	// Payed 1 By All
+	// Pay 1 to everyone
+	// Choose a payer
 
 	void Start () {
 		SetEvents();
