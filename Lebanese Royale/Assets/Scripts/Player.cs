@@ -25,6 +25,7 @@ public class Player : MonoBehaviour {
 			StartCoroutine(MoveIt( turn, direction));
 		}
 	}
+	//This coroutine makes the movement an animation instead of a flash
 	private IEnumerator MoveIt(int turn,string direction){
 		if(direction=="Left")
 			for(int i=1;i<=turn;i++){
