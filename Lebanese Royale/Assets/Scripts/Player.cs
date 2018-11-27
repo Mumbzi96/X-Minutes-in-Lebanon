@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
             _points = value;
         }
     }
-	int nextX=7;
+	int nextX=MainGame.spacer;
 	int nextY=0;
 
 	public void Move(int turn,string direction){
