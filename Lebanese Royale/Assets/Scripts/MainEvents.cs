@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainEvents : MonoBehaviour {
 
-	static string[] eventList= new string[10];
+	static string[] eventList= new string[11];
 	// int eventType;
 
 	void Start () {
@@ -25,15 +25,23 @@ public class MainEvents : MonoBehaviour {
 		eventList[7]="Subtract";
 		eventList[8]="Add";
 		eventList[9]="Add";
+		eventList[10]="PayTo";
 	}
 
 	public static void GetEvent(string tag){
-		GameObject player= GameObject.FindWithTag(tag);
+		
+		//This part is used for the "PayTo" case
+		int luckyPlayerNumber=Random.Range(1,MainGame.Players);
+		string luckyPlayerName="Player"+luckyPlayerNumber;
+		GameObject player= GameObject.FindWithTag(luckyPlayerName);
+		//This part kello rawa2 dw I GOT THIS!
+		GameObject luckyPlayer= GameObject.FindWithTag(tag);
         int eventNumber=Random.Range(0,9);
 		int turn;
 		switch(eventList[eventNumber]){
 			case "Add":turn=Random.Range(1,10);player.GetComponent<Player>().points+=turn;break;
 			case "Subtract":turn=Random.Range(1,10);player.GetComponent<Player>().points-=turn;break;
+			case "PayTo":turn=Random.Range(1,5);player.GetComponent<Player>().points-=turn;luckyPlayer.GetComponent<Player>().points+=turn;break;
 		}
 
 	}
