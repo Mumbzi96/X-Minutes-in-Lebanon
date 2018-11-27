@@ -24,7 +24,7 @@ public class MainGame : MonoBehaviour {
 	public static int spacer=6;
 	//Static values
 	public static bool InputEnabled= true;
-	public static int tileNumbers=20;
+	// public static int tileNumbers=20;
 	public static int Players = 2;
 	private static int turn = 1;
 	public static string Turn{
