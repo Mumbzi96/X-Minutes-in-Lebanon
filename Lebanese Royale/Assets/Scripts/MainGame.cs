@@ -21,6 +21,7 @@ public class MainGame : MonoBehaviour {
 	public Text playerTurn;
 	//UI helpers
 	private float time;
+	public static int spacer=15;
 	//Static values
 	public static bool InputEnabled= true;
 	public static int tileNumbers=20;
@@ -57,7 +58,7 @@ public class MainGame : MonoBehaviour {
 		Vector3 pos= new Vector3(0,0);
 		//Add start Floor
 		Instantiate(StartFloor,pos,new Quaternion(0,0,0,0));
-		float newX=pos.x +7;
+		float newX=pos.x +spacer;
 		float newY=0;
 		pos.Set(newX,pos.y,0);
 		//Add event Floors
@@ -65,25 +66,25 @@ public class MainGame : MonoBehaviour {
 			if(i==2&&i!=0){
 				FloorObject.tag="GoDown";
 				Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
-				newY=pos.y -7;
+				newY=pos.y -spacer;
 				pos.Set(pos.x,newY,0);
 			}
 			else if(i==5&&i!=0){
 				FloorObject.tag="GoUp";
 				Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
-				newY=pos.y +7;
+				newY=pos.y +spacer;
 				pos.Set(pos.x,newY,0);
 			}
 			// else if(i==6&&i!=0){
 			// 	FloorObject.tag="GoLeft";
 			// 	Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
-			// 	newX=pos.x -7;
+			// 	newX=pos.x -spacer;
 			// 	pos.Set(newX,pos.y,0);;
 			// }
 			else{
 				FloorObject.tag="GoRight";
 				Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
-				newX=pos.x +7;
+				newX=pos.x +spacer;
 				pos.Set(newX,pos.y,0);
 			}
 			
