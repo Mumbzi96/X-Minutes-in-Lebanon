@@ -21,7 +21,7 @@ public class MainGame : MonoBehaviour {
 	public Text playerTurn;
 	//UI helpers
 	private float time;
-	public static int spacer=15;
+	public static int spacer=6;
 	//Static values
 	public static bool InputEnabled= true;
 	public static int tileNumbers=20;
@@ -44,8 +44,8 @@ public class MainGame : MonoBehaviour {
 	
 	void Start () {
 		SoundEffectsHelper.Instance.MakeButtonPressSound();
-		AddFloors();
-		AddPlayers();
+		// AddFloors();
+		// AddPlayers();
 		player1.tag="Player1";
 		player2.tag="Player2";
 		InputEnabled= true;
@@ -106,12 +106,12 @@ public class MainGame : MonoBehaviour {
 	}
 
 	void StartSimulation(){
-		GameObject player1t= GameObject.FindWithTag("Player1");
-		GameObject player2t= GameObject.FindWithTag("Player2");
-		int turn=Random.Range(1,6);
-		player1t.GetComponent<Player>().Move(turn,"Right");
-		turn=Random.Range(1,6);
-		player2t.GetComponent<Player>().Move(turn,"Right");
+		// GameObject player1t= GameObject.FindWithTag("Player1");
+		// GameObject player2t= GameObject.FindWithTag("Player2");
+		// int turn=Random.Range(1,6);
+		// player1t.GetComponent<Player>().Move(turn,"Right");
+		// turn=Random.Range(1,6);
+		// player2t.GetComponent<Player>().Move(turn,"Right");
 		
 	}
 	

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212608916065250856}
   - component: {fileID: 58067512571054220}
   - component: {fileID: 114422655910475604}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: start
   m_TagString: StartFloor
   m_Icon: {fileID: 0}
@@ -100,8 +100,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -781106673
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5d960afd731efe145b9a1807e0f7d951, type: 3}
   m_Color: {r: 0.9716981, g: 0.9487807, b: 0.9547111, a: 1}
