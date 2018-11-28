@@ -25,7 +25,7 @@ public class MainFG : MonoBehaviour {
 	public Text player2score;
 	public Text timeText;
 	// UI helpers
-	private float time=10f;
+	private float time=20f;
 
 	// Use this for initialization
 	void Start () {
@@ -48,7 +48,6 @@ public class MainFG : MonoBehaviour {
 	void Update () {
 		Timer();
 		Scores();
-		//7dud collider or no exiting camera
 		//Save and Load after gamer over
 	}
 

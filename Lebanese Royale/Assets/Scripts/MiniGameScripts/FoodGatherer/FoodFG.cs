@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class FoodFG : MonoBehaviour {
 	public int points = 1;
-
-	//Constructors
-	public FoodFG(int points=1){
-		this.points=points;
-
-	}
 	
 	// Use this for initialization
 	void Start () {

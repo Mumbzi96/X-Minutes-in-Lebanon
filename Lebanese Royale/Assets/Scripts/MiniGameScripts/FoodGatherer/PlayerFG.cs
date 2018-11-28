@@ -11,10 +11,6 @@ public class PlayerFG : MonoBehaviour {
         {
             return _points;
         }
-        // set
-        // {
-        //     _points = value;
-        // }
     }
 	Rigidbody2D rb2d;
 	float speed=7;
