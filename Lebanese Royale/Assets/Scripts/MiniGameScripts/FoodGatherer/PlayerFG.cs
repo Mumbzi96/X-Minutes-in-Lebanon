@@ -23,7 +23,8 @@ public class PlayerFG : MonoBehaviour {
 		rb2d=gameObject.GetComponent<Rigidbody2D>();
 	}
 	void FixedUpdate(){
-		Move();
+		if(MainFG.InputEnabled==true)
+			Move();
 	}
 
 	public void Move(){

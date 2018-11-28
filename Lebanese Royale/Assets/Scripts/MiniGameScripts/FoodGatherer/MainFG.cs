@@ -19,12 +19,13 @@ public class MainFG : MonoBehaviour {
 	public FoodFG wings;
 	// Helpers
 	FoodFG[] allCuisines = new FoodFG[9];
+	public static bool InputEnabled= true;
 	// UI objects to update
 	public Text player1score;
 	public Text player2score;
 	public Text timeText;
 	// UI helpers
-	private float time=30f;
+	private float time=10f;
 
 	// Use this for initialization
 	void Start () {
@@ -48,14 +49,11 @@ public class MainFG : MonoBehaviour {
 		Timer();
 		Scores();
 		//7dud collider or no exiting camera
-		//InputEnabled boolean for when game ends
-		//GameOver()
 		//Save and Load after gamer over
 	}
 
 	void SpawnFood(){
 		int size=(int)(Camera.main.orthographicSize-0.5);
-		// Debug.Log(Camera.main.orthographicSize);
 		int x=Random.Range(-size,size);
 		int y=Random.Range(-size,size);
 		int toSpawn=Random.Range(0,allCuisines.Length);
@@ -68,6 +66,10 @@ public class MainFG : MonoBehaviour {
 		time-=Time.deltaTime;
 		int seconds=(int)time;
 		timeText.text=seconds.ToString();
+		if(time<=0){
+			InputEnabled=false;
+			CancelInvoke("SpawnFood");
+		}
 	}
 
 	void Scores(){
