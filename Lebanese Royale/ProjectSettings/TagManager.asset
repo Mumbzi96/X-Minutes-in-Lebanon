@@ -14,6 +14,7 @@ TagManager:
   - GoLeft
   - GoUp
   - GoDown
+  - Food
   layers:
   - Default
   - TransparentFX
