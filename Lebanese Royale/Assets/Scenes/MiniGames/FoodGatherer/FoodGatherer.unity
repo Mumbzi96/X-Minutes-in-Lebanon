@@ -163,11 +163,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4982728217578404, guid: 3a75259d09086e8469ddcf451a3e3042, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.77920556
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4982728217578404, guid: 3a75259d09086e8469ddcf451a3e3042, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.4734967
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4982728217578404, guid: 3a75259d09086e8469ddcf451a3e3042, type: 2}
       propertyPath: m_LocalPosition.z
@@ -209,11 +209,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4774253859773596, guid: a010b3653b2c76a43be7c9a9cfda785e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5.2207947
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4774253859773596, guid: a010b3653b2c76a43be7c9a9cfda785e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.5265033
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4774253859773596, guid: a010b3653b2c76a43be7c9a9cfda785e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -346,6 +346,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be68f8c9fc8caa4486bed0a6e846f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ba2lewa: {fileID: 114699478233371810, guid: 8a082a6d541900247841539738b268ea, type: 2}
+  bread: {fileID: 114402660189333574, guid: fb9ee5311fef0e74ab6c1f17e958a10f, type: 2}
+  falefel: {fileID: 114450624196626028, guid: e10759c0d12cfdc4fb01f0e688b552c3, type: 2}
+  ftayer: {fileID: 114300314059471154, guid: e94544bfefc52f643849bd08f86a9f14, type: 2}
+  ful: {fileID: 114313583795649274, guid: c42bf8699645505469609f745aedec8e, type: 2}
+  kabse: {fileID: 114155890489013860, guid: 5273be0cd42a8c44fa056c96f313e1e8, type: 2}
+  shawerma: {fileID: 114591374113032948, guid: f63d0984b4bf13f41bd0a2ed98613cd2, type: 2}
+  tabbuleh: {fileID: 114894926064704882, guid: 0a58d88de7efcdf4abe0cb507ce9133f, type: 2}
+  wings: {fileID: 114521024469938670, guid: a21edaff5db5e4b44944faf853063f3b, type: 2}
   player1score: {fileID: 475430850}
   player2score: {fileID: 1332871438}
   timeText: {fileID: 1856830778}
