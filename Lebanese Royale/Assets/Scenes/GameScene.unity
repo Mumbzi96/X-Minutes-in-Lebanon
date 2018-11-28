@@ -1277,35 +1277,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1016619076105428, guid: 224d3931d39f0e84f866b4d993f379a5, type: 2}
-      propertyPath: m_Name
-      value: PlayerTurn
-      objectReference: {fileID: 0}
-    - target: {fileID: 114534439511783898, guid: 224d3931d39f0e84f866b4d993f379a5,
-        type: 2}
-      propertyPath: m_Text
-      value: 'Roll: '
-      objectReference: {fileID: 0}
-    - target: {fileID: 114765621085064612, guid: 224d3931d39f0e84f866b4d993f379a5,
-        type: 2}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114512899204810816, guid: 224d3931d39f0e84f866b4d993f379a5,
-        type: 2}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114534439511783898, guid: 224d3931d39f0e84f866b4d993f379a5,
-        type: 2}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114149608053221714, guid: 224d3931d39f0e84f866b4d993f379a5,
-        type: 2}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 224d3931d39f0e84f866b4d993f379a5, type: 2}
   m_IsPrefabAsset: 0
@@ -51342,22 +51313,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4094738087896758, guid: 8459660478b759b48b02158fdba940ea,
     type: 2}
   m_PrefabInternal: {fileID: 1092145718}
---- !u!1 &1831085113 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1944089698523002, guid: 7fb6ffd9471b367468bb5813332cb115,
-    type: 2}
-  m_PrefabInternal: {fileID: 328662406}
---- !u!114 &1831085115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1831085113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d6a1027bfbcc746a80e3052ece1774, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1832976450
 Prefab:
   m_ObjectHideFlags: 0
