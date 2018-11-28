@@ -7,19 +7,40 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 public class MainFG : MonoBehaviour {
-	// //Object to instantiate at start
-	// public Player player1; 
-	// public Player player2;
-	//UI objects to update
+	// Public objects
+	public FoodFG ba2lewa;
+	public FoodFG bread;
+	public FoodFG falefel;
+	public FoodFG ftayer;
+	public FoodFG ful;
+	public FoodFG kabse;
+	public FoodFG shawerma;
+	public FoodFG tabbuleh;
+	public FoodFG wings;
+	// Helpers
+	FoodFG[] allCuisines = new FoodFG[9];
+	// UI objects to update
 	public Text player1score;
 	public Text player2score;
 	public Text timeText;
-	//UI helpers
+	// UI helpers
 	private float time=30f;
 
 	// Use this for initialization
 	void Start () {
-		
+		AddFoodList();
+		InvokeRepeating("SpawnFood",1,1);
+	}
+	void AddFoodList(){
+		allCuisines[0]=ba2lewa;
+		allCuisines[1]=bread;
+		allCuisines[2]=falefel;
+		allCuisines[3]=ftayer;
+		allCuisines[4]=ful;
+		allCuisines[5]=kabse;
+		allCuisines[6]=shawerma;
+		allCuisines[7]=tabbuleh;
+		allCuisines[8]=wings;
 	}
 	
 	// Update is called once per frame
@@ -28,9 +49,18 @@ public class MainFG : MonoBehaviour {
 		Scores();
 		//7dud collider or no exiting camera
 		//InputEnabled boolean for when game ends
-		//SpawnFood with points()
 		//GameOver()
 		//Save and Load after gamer over
+	}
+
+	void SpawnFood(){
+		int size=(int)(Camera.main.orthographicSize-0.5);
+		// Debug.Log(Camera.main.orthographicSize);
+		int x=Random.Range(-size,size);
+		int y=Random.Range(-size,size);
+		int toSpawn=Random.Range(0,allCuisines.Length);
+		Vector3 pos= new Vector3(x,y);
+		Instantiate(allCuisines[toSpawn],pos,new Quaternion(0,0,0,0));
 	}
 
 	// Mainly text updates
