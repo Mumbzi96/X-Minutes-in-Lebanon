@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4435643756461554}
   - component: {fileID: 114001704194932252}
+  - component: {fileID: 114236460981988700}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -53,3 +54,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TurnSound: {fileID: 8300000, guid: aea57e3a9e18b2147a75d04a2cbc3719, type: 3}
   ButtonPressSound: {fileID: 8300000, guid: c245573fe920d7a4fb0486308480948a, type: 3}
+--- !u!114 &114236460981988700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1944089698523002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d6a1027bfbcc746a80e3052ece1774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
