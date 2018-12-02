@@ -2,7 +2,7 @@ using UnityEngine;
 
 [System.Serializable]
 
-class PlayerData{
+public class PlayerData{
 	public int mainp1Points;
 	public int mainp2Points;
 	public string mainWinner;
