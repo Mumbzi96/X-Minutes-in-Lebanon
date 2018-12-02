@@ -164,17 +164,22 @@ public class MainGame : MonoBehaviour {
 		// SceneManager.LoadScene("Winner");
 	}
 	public static void Save(string winner){
-		Debug.Log("Saving");
 		string savePath=Application.persistentDataPath+"/winner.dat";
 		BinaryFormatter bf = new BinaryFormatter();
-
 		PlayerData data = new PlayerData();
-		data.mainWinner=winner;
-		data.time=time;
+		
+		// Getting Players from the scene
 		GameObject[] players= GetPlayers();
+		// Saving Points
 		data.mainp1Points=players[0].GetComponent<Player>().points;
 		data.mainp2Points=players[1].GetComponent<Player>().points;
-		Debug.Log(data.mainp1Points);
+		// Saving positions
+		data.p1Pos= new LastPosition(players[0].transform.position.x,players[0].transform.position.y,players[0].transform.position.z);
+		data.p2Pos= new LastPosition(players[1].transform.position.x,players[1].transform.position.y,players[1].transform.position.z);
+		// Saving other stuff
+		data.mainWinner=winner;
+		data.time=time;
+		// Dirty Work
 		using (var file = File.Create(savePath)){
 			bf.Serialize(file,data);
 		}
@@ -189,20 +194,23 @@ public class MainGame : MonoBehaviour {
 	}
 
 	public static void Load(){
-		Debug.Log("Loading");
 		string savePath=Application.persistentDataPath+"/winner.dat";
 		
 		if (File.Exists(savePath)){
 			BinaryFormatter bf = new BinaryFormatter();
 			using (var file = File.Open(savePath, FileMode.Open)){
 				PlayerData data = (PlayerData)bf.Deserialize(file);
-				// Taking data and putting it back in the scene
+				// Getting players in the scene
 				GameObject[] players= GetPlayers();
+				// Setting Points back
 				players[0].GetComponent<Player>().points=data.mainp1Points;
 				players[1].GetComponent<Player>().points=data.mainp2Points;
-				Debug.Log(data.mainp1Points);
-				Debug.Log(players[0].GetComponent<Player>().points);
+				// Setting positions back
+				players[0].transform.position= new Vector3(data.p1Pos.pX,data.p1Pos.pY,data.p1Pos.pZ);
+				players[1].transform.position= new Vector3(data.p2Pos.pX,data.p2Pos.pY,data.p2Pos.pZ);
+				// Setting time back
 				time=data.time;
+
 			}
 		}
 	}
