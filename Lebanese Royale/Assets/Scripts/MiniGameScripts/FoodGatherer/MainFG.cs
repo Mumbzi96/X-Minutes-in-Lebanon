@@ -129,7 +129,6 @@ public class MainFG : MonoBehaviour {
 			BinaryFormatter bf = new BinaryFormatter();
 			using (var file = File.Open(savePath, FileMode.Open)){
 				data = (PlayerData)bf.Deserialize(file);
-				// winner = data.mainWinner;
 			}
 			return data;
 		}

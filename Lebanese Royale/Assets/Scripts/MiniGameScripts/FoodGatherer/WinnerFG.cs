@@ -15,7 +15,7 @@ public class WinnerFG : MonoBehaviour {
 	void Start () {
 		skin= Resources.Load("GUISkin") as GUISkin;
 		PlayerData winner = MainFG.Load();
-		WinnerText.text="Got some points... Good job much? Player"+winner.lastWinner;
+		WinnerText.text="Good job much? Player"+winner.lastWinner;
 	}
 	
 	void Update () {
@@ -24,7 +24,7 @@ public class WinnerFG : MonoBehaviour {
 
 	void OnGUI(){
 		GUI.skin=skin;
-		if(GUI.Button(new Rect(Screen.width/2-(buttonWidth/2),(2*Screen.height/3)-(buttonHeight/2),buttonWidth,buttonHeight),"Go To Menu")){
+		if(GUI.Button(new Rect(Screen.width/2-(buttonWidth/2),(2*Screen.height/3)-(buttonHeight/2),buttonWidth,buttonHeight),"Get back to game")){
 			Application.LoadLevel("GameScene");
 		}
 	}
