@@ -25,10 +25,11 @@ public class MainFG : MonoBehaviour {
 	public Text player2score;
 	public Text timeText;
 	// UI helpers
-	private float time=20f;
+	private float time=10f;
 
 	// Use this for initialization
 	void Start () {
+		isGameEnabled=true;
 		AddFoodList();
 		InvokeRepeating("SpawnFood",1,1);
 	}
@@ -101,13 +102,14 @@ public class MainFG : MonoBehaviour {
 		else if (p2points>p1points)
 			winner="2";
 		else winner="0";
+		PlayerData data = Load();
 
 
 		// Actually saving
 		string savePath=Application.persistentDataPath+"/winner.dat";
 		BinaryFormatter bf = new BinaryFormatter();
 
-		PlayerData data = new PlayerData();
+		
 		data.lastp1Points=p1points;
 		data.lastp2Points=p2points;
 		data.lastWinner=winner;
