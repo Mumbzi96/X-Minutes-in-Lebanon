@@ -157,34 +157,35 @@ public class MainGame : MonoBehaviour {
 
 	// Statics
 	public static void SetWinner(string winner){
-		Debug.Log(winner);
 		Save(winner);
 		Application.LoadLevel("Winner");
 		// SceneManager.LoadScene("Winner");
 	}
 	public static void Save(string winner){
+
+		string savePath=Application.persistentDataPath+"/winner.dat";
 		BinaryFormatter bf = new BinaryFormatter();
-		FileStream file = File.Create(Application.persistentDataPath+"/winner.dat");
-		
+
 		PlayerData data = new PlayerData();
-		data.winner=winner;
-		bf.Serialize(file,data);
-		file.Close();
+		data.mainWinner=winner;
+
+		using (var file = File.Create(savePath)){
+			bf.Serialize(file,data);
+		}
 	}
 	public static string Load(){
-		if (File.Exists(Application.persistentDataPath+"/winner.dat")){
+		string savePath=Application.persistentDataPath+"/winner.dat";
+		string winner="0";
+		if (File.Exists(savePath)){
 			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Open(Application.persistentDataPath+"/winner.dat", FileMode.Open);
-			PlayerData data = (PlayerData)bf.Deserialize(file);
-			file.Close();
-			string winner = data.winner;
+			using (var file = File.Open(savePath, FileMode.Open)){
+				PlayerData data = (PlayerData)bf.Deserialize(file);
+				winner = data.mainWinner;
+			}
 			return winner;
 		}
-		else return "0";
+		else return winner;
 	}
 }
 
-[System.Serializable]
-class PlayerData{
-	public string winner;
-}
+
