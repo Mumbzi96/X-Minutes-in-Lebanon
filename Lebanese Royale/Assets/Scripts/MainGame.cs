@@ -34,6 +34,8 @@ public class MainGame : MonoBehaviour {
 		set{
 			turn++;
 			if (turn>Players){
+				Save("hyye");
+				Application.LoadLevel("FoodGatherer");
 				turn=1;
 			}
 		}
@@ -162,19 +164,32 @@ public class MainGame : MonoBehaviour {
 		// SceneManager.LoadScene("Winner");
 	}
 	public static void Save(string winner){
-
+		Debug.Log("Saving");
 		string savePath=Application.persistentDataPath+"/winner.dat";
 		BinaryFormatter bf = new BinaryFormatter();
 
 		PlayerData data = new PlayerData();
 		data.mainWinner=winner;
 		data.time=time;
-
+		GameObject[] players= GetPlayers();
+		data.mainp1Points=players[0].GetComponent<Player>().points;
+		data.mainp2Points=players[1].GetComponent<Player>().points;
+		Debug.Log(data.mainp1Points);
 		using (var file = File.Create(savePath)){
 			bf.Serialize(file,data);
 		}
 	}
+	static GameObject[] GetPlayers(){
+		GameObject player1t= GameObject.FindWithTag("Player1");
+		GameObject player2t= GameObject.FindWithTag("Player2");
+		GameObject[] players=new GameObject[MainGame.Players];
+		players[0]=player1t;
+		players[1]=player2t;
+		return players;
+	}
+
 	public static void Load(){
+		Debug.Log("Loading");
 		string savePath=Application.persistentDataPath+"/winner.dat";
 		
 		if (File.Exists(savePath)){
@@ -182,6 +197,11 @@ public class MainGame : MonoBehaviour {
 			using (var file = File.Open(savePath, FileMode.Open)){
 				PlayerData data = (PlayerData)bf.Deserialize(file);
 				// Taking data and putting it back in the scene
+				GameObject[] players= GetPlayers();
+				players[0].GetComponent<Player>().points=data.mainp1Points;
+				players[1].GetComponent<Player>().points=data.mainp2Points;
+				Debug.Log(data.mainp1Points);
+				Debug.Log(players[0].GetComponent<Player>().points);
 				time=data.time;
 			}
 		}
