@@ -9,4 +9,5 @@ public class PlayerData{
 	public int lastp1Points;
 	public int lastp2Points;
 	public string lastWinner;
+	public float time;
 }

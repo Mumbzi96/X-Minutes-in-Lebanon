@@ -20,7 +20,7 @@ public class MainGame : MonoBehaviour {
 	public Text diceRollText;
 	public Text playerTurn;
 	//UI helpers
-	private float time;
+	private static float time;
 	public static int spacer=6;
 	//Static values
 	public static bool InputEnabled= true;
@@ -39,10 +39,10 @@ public class MainGame : MonoBehaviour {
 		}
 	}
 	
-
 	//Functions START HERE
 	
 	void Start () {
+		Load();
 		SoundEffectsHelper.Instance.MakeButtonPressSound();
 		// AddFloors();
 		// AddPlayers();
@@ -168,23 +168,23 @@ public class MainGame : MonoBehaviour {
 
 		PlayerData data = new PlayerData();
 		data.mainWinner=winner;
+		data.time=time;
 
 		using (var file = File.Create(savePath)){
 			bf.Serialize(file,data);
 		}
 	}
-	public static string Load(){
+	public static void Load(){
 		string savePath=Application.persistentDataPath+"/winner.dat";
-		string winner="0";
+		
 		if (File.Exists(savePath)){
 			BinaryFormatter bf = new BinaryFormatter();
 			using (var file = File.Open(savePath, FileMode.Open)){
 				PlayerData data = (PlayerData)bf.Deserialize(file);
-				winner = data.mainWinner;
+				// Taking data and putting it back in the scene
+				time=data.time;
 			}
-			return winner;
 		}
-		else return winner;
 	}
 }
 
