@@ -108,8 +108,12 @@ public class MainFG : MonoBehaviour {
 		// Actually saving
 		string savePath=Application.persistentDataPath+"/winner.dat";
 		BinaryFormatter bf = new BinaryFormatter();
-
-		
+		// Adding main points to data
+		if(winner=="1")
+			data.mainp1Points+=10;
+		else if(winner=="2")
+			data.mainp2Points+=10;
+		// Saving the games last points (sa2ale)
 		data.lastp1Points=p1points;
 		data.lastp2Points=p2points;
 		data.lastWinner=winner;
