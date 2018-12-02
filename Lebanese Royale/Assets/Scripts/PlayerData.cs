@@ -8,5 +8,5 @@ class PlayerData{
 	public string mainWinner;
 	public int lastp1Points;
 	public int lastp2Points;
-	public int lastWinner;
+	public string lastWinner;
 }
