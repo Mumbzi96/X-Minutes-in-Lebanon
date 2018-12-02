@@ -19,7 +19,7 @@ public class MainFG : MonoBehaviour {
 	public FoodFG wings;
 	// Helpers
 	FoodFG[] allCuisines = new FoodFG[9];
-	public static bool InputEnabled= true;
+	public static bool isGameEnabled= true;
 	// UI objects to update
 	public Text player1score;
 	public Text player2score;
@@ -46,8 +46,11 @@ public class MainFG : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Timer();
-		Scores();
+		if(isGameEnabled==true){
+			Timer();
+			Scores();
+		}
+		
 		//Save and Load after gamer over
 	}
 
@@ -66,7 +69,7 @@ public class MainFG : MonoBehaviour {
 		int seconds=(int)time;
 		timeText.text=seconds.ToString();
 		if(time<=0){
-			InputEnabled=false;
+			isGameEnabled=false;
 			CancelInvoke("SpawnFood");
 		}
 	}
