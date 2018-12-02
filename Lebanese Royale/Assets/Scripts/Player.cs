@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
-    private int _points = 0;
+    private int _points;
 	public int points{
         get
         {
