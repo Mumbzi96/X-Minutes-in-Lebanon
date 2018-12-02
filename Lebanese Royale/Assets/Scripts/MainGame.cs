@@ -35,7 +35,7 @@ public class MainGame : MonoBehaviour {
 			turn++;
 			if (turn>Players){
 				Save("hyye");
-				Application.LoadLevel("FoodGatherer");
+				Application.LoadLevel("MenuFG");
 				turn=1;
 			}
 		}
