@@ -14,7 +14,7 @@ public class Winner : MonoBehaviour {
 
 	void Start () {
 		skin= Resources.Load("GUISkin") as GUISkin;
-		string winner = MainGame.Load();
+		string winner = Load();
 		WinnerText.text="Chicken Dinner Mr."+winner;
 	}
 	
@@ -27,6 +27,20 @@ public class Winner : MonoBehaviour {
 		if(GUI.Button(new Rect(Screen.width/2-(buttonWidth/2),(2*Screen.height/3)-(buttonHeight/2),buttonWidth,buttonHeight),"Go To Menu")){
 			Application.LoadLevel("Menu");
 		}
+	}
+
+	public static string Load(){
+		string savePath=Application.persistentDataPath+"/winner.dat";
+		string winner="0";
+		if (File.Exists(savePath)){
+			BinaryFormatter bf = new BinaryFormatter();
+			using (var file = File.Open(savePath, FileMode.Open)){
+				PlayerData data = (PlayerData)bf.Deserialize(file);
+				winner = data.mainWinner;
+			}
+			return winner;
+		}
+		else return winner;
 	}
 
 }
