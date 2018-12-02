@@ -50,8 +50,6 @@ public class MainFG : MonoBehaviour {
 			Timer();
 			Scores();
 		}
-		
-		//Save and Load after gamer over
 	}
 
 	void SpawnFood(){
@@ -71,13 +69,64 @@ public class MainFG : MonoBehaviour {
 		if(time<=0){
 			isGameEnabled=false;
 			CancelInvoke("SpawnFood");
+			Save();
+			Application.LoadLevel("WinnerFG");
 		}
 	}
-
+	static GameObject[] GetPlayers(){
+		GameObject player1t= GameObject.FindWithTag("Player1");
+		GameObject player2t= GameObject.FindWithTag("Player2");
+		GameObject[] players=new GameObject[MainGame.Players];
+		players[0]=player1t;
+		players[1]=player2t;
+		return players;
+	}
 	void Scores(){
 		GameObject player1t= GameObject.FindWithTag("Player1");
 		GameObject player2t= GameObject.FindWithTag("Player2");
 		player1score.text="Player1: "+player1t.GetComponent<PlayerFG>().points.ToString();
 		player2score.text="Player2: "+player2t.GetComponent<PlayerFG>().points.ToString();
+	}
+
+
+	// Statics
+	public static void Save(){
+		// Deciding scores
+		GameObject[] players=GetPlayers();
+		int p1points = players[0].GetComponent<PlayerFG>().points;
+		int p2points = players[1].GetComponent<PlayerFG>().points;
+		string winner;
+		if(p1points>p2points)
+			winner="1";
+		else if (p2points>p1points)
+			winner="2";
+		else winner="0";
+
+
+		// Actually saving
+		string savePath=Application.persistentDataPath+"/winner.dat";
+		BinaryFormatter bf = new BinaryFormatter();
+
+		PlayerData data = new PlayerData();
+		data.lastp1Points=p1points;
+		data.lastp2Points=p2points;
+		data.lastWinner=winner;
+
+		using (var file = File.Create(savePath)){
+			bf.Serialize(file,data);
+		}
+	}
+	public static PlayerData Load(){
+		string savePath=Application.persistentDataPath+"/winner.dat";
+		PlayerData data=new PlayerData();
+		if (File.Exists(savePath)){
+			BinaryFormatter bf = new BinaryFormatter();
+			using (var file = File.Open(savePath, FileMode.Open)){
+				data = (PlayerData)bf.Deserialize(file);
+				// winner = data.mainWinner;
+			}
+			return data;
+		}
+		else return new PlayerData();
 	}
 }

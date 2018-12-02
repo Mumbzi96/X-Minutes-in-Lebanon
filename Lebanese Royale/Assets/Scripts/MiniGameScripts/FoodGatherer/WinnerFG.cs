@@ -14,8 +14,8 @@ public class WinnerFG : MonoBehaviour {
 
 	void Start () {
 		skin= Resources.Load("GUISkin") as GUISkin;
-		string winner = MainGame.Load();
-		WinnerText.text="Got some points... Good job much?"+winner;
+		PlayerData winner = MainFG.Load();
+		WinnerText.text="Got some points... Good job much? Player"+winner.lastWinner;
 	}
 	
 	void Update () {
