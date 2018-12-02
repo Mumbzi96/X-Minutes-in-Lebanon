@@ -42,7 +42,6 @@ public class MainGame : MonoBehaviour {
 	}
 	
 	//Functions START HERE
-	
 	void Start () {
 		Load();
 		SoundEffectsHelper.Instance.MakeButtonPressSound();
@@ -117,7 +116,6 @@ public class MainGame : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		Timer();
 		Scores();
@@ -200,17 +198,19 @@ public class MainGame : MonoBehaviour {
 			BinaryFormatter bf = new BinaryFormatter();
 			using (var file = File.Open(savePath, FileMode.Open)){
 				PlayerData data = (PlayerData)bf.Deserialize(file);
-				// Getting players in the scene
-				GameObject[] players= GetPlayers();
-				// Setting Points back
-				players[0].GetComponent<Player>().points=data.mainp1Points;
-				players[1].GetComponent<Player>().points=data.mainp2Points;
-				// Setting positions back
-				players[0].transform.position= new Vector3(data.p1Pos.pX,data.p1Pos.pY,data.p1Pos.pZ);
-				players[1].transform.position= new Vector3(data.p2Pos.pX,data.p2Pos.pY,data.p2Pos.pZ);
-				// Setting time back
-				time=data.time;
-
+					// This "if" condition is to reset all data if its a new game
+					if(data.mainWinner=="hyye"){
+						// Getting players in the scene
+						GameObject[] players= GetPlayers();
+						// Setting Points back
+						players[0].GetComponent<Player>().points=data.mainp1Points;
+						players[1].GetComponent<Player>().points=data.mainp2Points;
+						// Setting positions back
+						players[0].transform.position= new Vector3(data.p1Pos.pX,data.p1Pos.pY,data.p1Pos.pZ);
+						players[1].transform.position= new Vector3(data.p2Pos.pX,data.p2Pos.pY,data.p2Pos.pZ);
+						// Setting time back
+						time=data.time;
+					}
 			}
 		}
 	}
