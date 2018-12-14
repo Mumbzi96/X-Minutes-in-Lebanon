@@ -31,7 +31,6 @@ public class MainEvents : MonoBehaviour {
 	}
 
 	public static void GetEvent(string tag){
-		
 		//This part is used for the "PayTo" case
 		int luckyPlayerNumber=Random.Range(1,MainGame.Players);
 		string luckyPlayerName="Player"+luckyPlayerNumber;
@@ -41,7 +40,7 @@ public class MainEvents : MonoBehaviour {
         int eventNumber=Random.Range(0,9);
 		int turn;
 		switch(eventList[eventNumber]){
-			case "Add":turn=Random.Range(1,10);player.GetComponent<Player>().points+=turn;break;
+			case "Add":turn=Random.Range(1,10);luckyPlayer.GetComponent<Player>().points+=turn;break;
 			case "Subtract":turn=Random.Range(1,10);player.GetComponent<Player>().points-=turn;break;
 			case "PayTo":turn=Random.Range(1,5);player.GetComponent<Player>().points-=turn;luckyPlayer.GetComponent<Player>().points+=turn;break;
 		}

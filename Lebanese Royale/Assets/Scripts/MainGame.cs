@@ -121,6 +121,7 @@ public class MainGame : MonoBehaviour {
 		Scores();
 		CameraFollow();
 		if(InputEnabled==true){
+			
 			Turns();
 		}
 		
@@ -144,9 +145,9 @@ public class MainGame : MonoBehaviour {
 	void Turns(){
 		if (Input.GetKeyUp(KeyCode.Space)){
 			GameObject player= GameObject.FindWithTag(Turn);
-			int turn=Random.Range(1,6);
-			diceRollText.text="Roll: "+turn.ToString();
-			player.GetComponent<Player>().Move(turn,"Right");
+			int diceRoll=Random.Range(1,6);
+			diceRollText.text="Roll: "+diceRoll;
+			player.GetComponent<Player>().Move(diceRoll,"Right");
 		}
 	}
 	void CameraFollow(){
