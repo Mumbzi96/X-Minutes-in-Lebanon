@@ -25,7 +25,7 @@ public class WinnerFG : MonoBehaviour {
 	void OnGUI(){
 		GUI.skin=skin;
 		if(GUI.Button(new Rect(Screen.width/2-(buttonWidth/2),(2*Screen.height/3)-(buttonHeight/2),buttonWidth,buttonHeight),"Get back to game")){
-			Application.LoadLevel("GameScene");
+			SceneManager.LoadScene("GameScene");
 		}
 	}
 

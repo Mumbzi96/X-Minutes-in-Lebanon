@@ -71,7 +71,7 @@ public class MainFG : MonoBehaviour {
 			isGameEnabled=false;
 			CancelInvoke("SpawnFood");
 			Save();
-			Application.LoadLevel("WinnerFG");
+			SceneManager.LoadScene("WinnerFG");
 		}
 	}
 	static GameObject[] GetPlayers(){

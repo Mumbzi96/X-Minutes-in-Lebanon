@@ -35,7 +35,7 @@ public class MainGame : MonoBehaviour {
 			turn++;
 			if (turn>Players){
 				Save("hyye");
-				Application.LoadLevel("MenuFG");
+				SceneManager.LoadScene("MenuFG");
 				turn=1;
 			}
 		}
@@ -159,7 +159,7 @@ public class MainGame : MonoBehaviour {
 	// Statics
 	public static void SetWinner(string winner){
 		Save(winner);
-		Application.LoadLevel("Winner");
+		SceneManager.LoadScene("Winner");
 		// SceneManager.LoadScene("Winner");
 	}
 	public static void Save(string winner){
