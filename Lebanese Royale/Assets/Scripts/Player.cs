@@ -52,7 +52,8 @@ public class Player : MonoBehaviour {
 				yield return new WaitForSeconds(1f);
 			}
 		}
-		SoundEffectsHelper.Instance.MakeTurnSound();
+		// Sound is playing
+		SoundEffectsHelper.Instance.MakeTurnSound(transform.position.x,transform.position.y,transform.position.z);
 		MainEvents.GetEvent(gameObject.tag);
 		MainGame.Turn="whatever";
 		MainGame.InputEnabled=true;
