@@ -12,11 +12,9 @@ public class PlayerFG : MonoBehaviour {
             return _points;
         }
     }
-	Rigidbody2D rb2d;
 	float speed=7;
 
 	void Start(){
-		rb2d=gameObject.GetComponent<Rigidbody2D>();
 	}
 	void FixedUpdate(){
 		if(MainFG.isGameEnabled==true)

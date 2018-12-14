@@ -134,7 +134,6 @@ public class MainGame : MonoBehaviour {
 		timeText.text=minutes + ":" +seconds;
 	}
 	void Scores(){
-		GameObject turnT= GameObject.FindWithTag(Turn);
 		GameObject player1t= GameObject.FindWithTag("Player1");
 		GameObject player2t= GameObject.FindWithTag("Player2");
 		playerTurn.text=Turn;
@@ -160,7 +159,6 @@ public class MainGame : MonoBehaviour {
 	public static void SetWinner(string winner){
 		Save(winner);
 		SceneManager.LoadScene("Winner");
-		// SceneManager.LoadScene("Winner");
 	}
 	public static void Save(string winner){
 		string savePath=Application.persistentDataPath+"/winner.dat";
