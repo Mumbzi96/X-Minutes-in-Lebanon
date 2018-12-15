@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FoodFG : MonoBehaviour {
-	public int points = 1;
+	private int _points=1;
+	public int points{
+        get
+        {
+            return _points;
+        }
+        set{}
+    }
 	
-	// Use this for initialization
 	void Start () {
-		
+		/* 
+		Food's size is <0 & float so it's multiplied by 100 to make a simple rounding number
+		and casted to int because points are int...
+		*/
+		float val=transform.localScale.x*100;
+		_points=(int)val;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}
