@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4258055118221096}
   - component: {fileID: 212096328271934120}
   - component: {fileID: 60066047110631786}
-  - component: {fileID: 50329389556442648}
   - component: {fileID: 114699622795750838}
+  - component: {fileID: 50799716950139404}
   m_Layer: 0
   m_Name: rocket
   m_TagString: Player1Bullet
@@ -43,7 +43,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50329389556442648
+--- !u!50 &50799716950139404
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: 5
-  direction: left
+  direction: right
   firedBy: Player1
 --- !u!212 &212096328271934120
 SpriteRenderer:
