@@ -25,6 +25,7 @@ public class MainFG : MonoBehaviour {
 
 	// Helpers
 	FoodFG[] allCuisines = new FoodFG[9];
+	Weapon[] allWeapons = new Weapon[3];
 	public static bool isGameEnabled= true;
 	// UI objects to update
 	public Text player1score;
@@ -37,7 +38,9 @@ public class MainFG : MonoBehaviour {
 	void Start () {
 		isGameEnabled=true;
 		AddFoodList();
+		AddWeaponList();
 		InvokeRepeating("SpawnFood",1,3);
+		InvokeRepeating("SpawnWeapons",1,8);
 	}
 	void AddFoodList(){
 		allCuisines[0]=ba2lewa;
@@ -50,7 +53,11 @@ public class MainFG : MonoBehaviour {
 		allCuisines[7]=tabbuleh;
 		allCuisines[8]=wings;
 	}
-	
+	void AddWeaponList(){
+		allWeapons[0]=pencil;
+		allWeapons[1]=ak47;
+		allWeapons[2]=rpg;
+	}
 	// Update is called once per frame
 	void Update () {
 		if(isGameEnabled==true){
@@ -66,6 +73,14 @@ public class MainFG : MonoBehaviour {
 		int toSpawn=Random.Range(0,allCuisines.Length);
 		Vector3 pos= new Vector3(x,y);
 		Instantiate(allCuisines[toSpawn],pos,new Quaternion(0,0,0,0));
+	}
+	void SpawnWeapons(){
+		int size=(int)(Camera.main.orthographicSize-0.5);
+		int x=Random.Range(-size,size);
+		int y=Random.Range(-size,size);
+		int toSpawn=Random.Range(0,allWeapons.Length);
+		Vector3 pos= new Vector3(x,y);
+		Instantiate(allWeapons[toSpawn],pos,new Quaternion(0,0,0,0));
 	}
 
 	// Mainly text updates
