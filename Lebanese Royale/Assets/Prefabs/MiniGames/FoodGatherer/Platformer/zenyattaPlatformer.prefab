@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1630956642954016}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.1440206, y: 1.8480397, z: 0}
+  m_LocalPosition: {x: 0.95, y: -0.08, z: 0}
   m_LocalScale: {x: 0.06, y: 0.06, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,10 +100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6432aa5531a312c498afda44136c0beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pencil: {fileID: 0}
+  pencil: {fileID: 114866138607513496, guid: fa5da73ed5eaac846bb9833bd9541381, type: 2}
   ak47Bullet: {fileID: 114420781208612790, guid: 96d551e6840ba124288d60173b6bbcc4,
     type: 2}
-  rocket: {fileID: 0}
+  rocket: {fileID: 114699622795750838, guid: 00603b5ae7fae0c4895f6939882bfec4, type: 2}
 --- !u!114 &114625121296862492
 MonoBehaviour:
   m_ObjectHideFlags: 1

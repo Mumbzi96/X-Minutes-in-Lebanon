@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212096328271934120}
   - component: {fileID: 60066047110631786}
   - component: {fileID: 50329389556442648}
+  - component: {fileID: 114699622795750838}
   m_Layer: 0
   m_Name: rocket
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1534417806967608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9584999, y: 1.5214666, z: 0}
+  m_LocalPosition: {x: -4.6828823, y: 2.2200313, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -120,6 +121,21 @@ PolygonCollider2D:
       - {x: -0.22, y: -0.34}
       - {x: 0.01, y: -0.17}
       - {x: 1.53, y: -0.17}
+--- !u!114 &114699622795750838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1534417806967608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa09879ab2e79642b15aef72056fd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  speed: 5
+  direction: right
+  firedBy: 
 --- !u!212 &212096328271934120
 SpriteRenderer:
   m_ObjectHideFlags: 1

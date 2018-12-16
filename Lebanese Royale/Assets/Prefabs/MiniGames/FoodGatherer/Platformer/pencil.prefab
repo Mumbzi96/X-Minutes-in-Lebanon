@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212596505417867208}
   - component: {fileID: 60993842629574422}
   - component: {fileID: 50966227428455630}
+  - component: {fileID: 114866138607513496}
   m_Layer: 0
   m_Name: pencil
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1090599039591814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5326403, y: 2.5852392, z: 0}
+  m_LocalPosition: {x: -4.5822573, y: 3.045155, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,6 +96,21 @@ PolygonCollider2D:
       - {x: 1.9499999, y: -0.19}
       - {x: 1.9499999, y: -0.12}
       - {x: 1.9399999, y: -0.11}
+--- !u!114 &114866138607513496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1090599039591814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa09879ab2e79642b15aef72056fd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  speed: 5
+  direction: right
+  firedBy: 
 --- !u!212 &212596505417867208
 SpriteRenderer:
   m_ObjectHideFlags: 1

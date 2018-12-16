@@ -18,6 +18,8 @@ public class PlayerFG : MonoBehaviour {
 	private float shotTimer=0;
 	private string bulletTag;
 	private string firedBy;
+	private string equippedWeapon;
+	private Bullet currentBullet;
 	// Public GameObjects
 	public Bullet pencil;
 	public Bullet ak47Bullet;
@@ -30,6 +32,14 @@ public class PlayerFG : MonoBehaviour {
 		}
 		else if (gameObject.tag=="Player2")
 			bulletTag="Player2Bullet";
+	}
+	private void ChangeBullet(){
+		switch(equippedWeapon){
+			case "pencil":currentBullet=pencil;break;
+			case "ak47":currentBullet=ak47Bullet;break;
+			case "rpg":currentBullet=rocket;break;
+		}
+
 	}
 	void Update(){
 		
@@ -86,14 +96,14 @@ public class PlayerFG : MonoBehaviour {
 		SpriteRenderer mySpriteRenderer = GetComponent<SpriteRenderer>();
 		if(gameObject.tag=="Player1"){
 			if(Input.GetButton("Fire")==true){
-				ak47Bullet.tag=bulletTag;
-				ak47Bullet.firedBy=firedBy;
+				currentBullet.tag=bulletTag;
+				currentBullet.firedBy=firedBy;
 				if(mySpriteRenderer.flipX==true)
-					ak47Bullet.direction="left";
+					currentBullet.direction="left";
 				else
-					ak47Bullet.direction="right";
+					currentBullet.direction="right";
 
-				Instantiate(ak47Bullet, transform.position, new Quaternion(0,0,0,0));
+				Instantiate(currentBullet, transform.position, new Quaternion(0,0,0,0));
 				canShoot=false;
 				shotTimer=1;
 			}
@@ -101,14 +111,14 @@ public class PlayerFG : MonoBehaviour {
 
 		else if(gameObject.tag=="Player2"){
 			if(Input.GetButton("Fire2")==true){
-				ak47Bullet.tag=bulletTag;
-				ak47Bullet.firedBy=firedBy;
+				currentBullet.tag=bulletTag;
+				currentBullet.firedBy=firedBy;
 				if(mySpriteRenderer.flipX==true)
-					ak47Bullet.direction="left";
+					currentBullet.direction="left";
 				else
-					ak47Bullet.direction="right";
+					currentBullet.direction="right";
 
-				Instantiate(ak47Bullet, transform.position, new Quaternion(0,0,0,0));
+				Instantiate(currentBullet, transform.position, new Quaternion(0,0,0,0));
 				canShoot=false;
 				shotTimer=1;
 			}
@@ -119,7 +129,7 @@ public class PlayerFG : MonoBehaviour {
 			case "Food":_points+=collision.gameObject.GetComponent<FoodFG>().points;break;
 			case "Player1Bullet":if(gameObject.tag=="Player2") _points-=50;break;
 			case "Player2Bullet":if(gameObject.tag=="Player1") _points-=50;break;
-			// case "Weapon":if(gameObject.GetComponent<Weapon>().type=="Player1") _points-=50;break;
+			case "Weapon":equippedWeapon=collision.gameObject.GetComponent<Weapon>().type;ChangeBullet();break;
 
 		}
 	}
