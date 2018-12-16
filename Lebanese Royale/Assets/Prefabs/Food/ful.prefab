@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212786200748116400}
   - component: {fileID: 114313583795649274}
   - component: {fileID: 61804564410117978}
+  - component: {fileID: 50162276782151776}
   m_Layer: 0
   m_Name: ful
   m_TagString: Food
@@ -42,6 +43,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50162276782151776
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1795880141065750}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61804564410117978
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -78,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10277132af6f65c45ad4d8c7911cfbd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 1
 --- !u!212 &212786200748116400
 SpriteRenderer:
   m_ObjectHideFlags: 1
