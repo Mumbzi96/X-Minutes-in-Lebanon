@@ -91,6 +91,16 @@ public class PlayerFG : MonoBehaviour {
 		}
 
 		else if(gameObject.tag=="Player2"){
+			if(Input.GetButton("Fire2")==true){
+				if(mySpriteRenderer.flipX==true)
+					ak47Bullet.direction="left";
+				else
+					ak47Bullet.direction="right";
+
+				Instantiate(ak47Bullet, transform.position, new Quaternion(0,0,0,0));
+				canShoot=false;
+				shotTimer=1;
+			}
 		}
 	}
 	void OnCollisionEnter2D(Collision2D collision){
