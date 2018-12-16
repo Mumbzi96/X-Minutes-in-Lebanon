@@ -5,16 +5,15 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 	[HideInInspector] public int damage=1;
 	[HideInInspector] public int speed=5;
-	public string direction="right";
+	[HideInInspector] public string direction="right";
+	[HideInInspector] public string firedBy;
 	
 	
 	void Start () {
-		
+		Destroy(gameObject,3);
 	}
 	
 	void Update () {
-		// transform.position += transform.right *speed* Time.deltaTime;
-		// if(MainFG.isGameEnabled==true)
 			Move();
 	}
 
@@ -27,6 +26,7 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collision){
-		Destroy(gameObject,3);
+		if(collision.gameObject.tag!=firedBy)
+			Destroy(gameObject);
 	}
 }
