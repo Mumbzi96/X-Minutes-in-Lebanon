@@ -16,12 +16,20 @@ public class PlayerFG : MonoBehaviour {
 	// Helpers
 	private bool canShoot=true;
 	private float shotTimer=0;
+	private string bulletTag;
+	private string firedBy;
 	// Public GameObjects
 	public Bullet pencil;
 	public Bullet ak47Bullet;
 	public Bullet rocket;
 
 	void Start(){
+		firedBy=gameObject.tag;
+		if (gameObject.tag=="Player1"){
+			bulletTag="Player1Bullet";
+		}
+		else if (gameObject.tag=="Player2")
+			bulletTag="Player2Bullet";
 	}
 	void Update(){
 		
@@ -30,7 +38,6 @@ public class PlayerFG : MonoBehaviour {
 		if(MainFG.isGameEnabled==true){
 			Move();
 			ShotTracker();
-						
 		}
 		
 		
@@ -79,6 +86,8 @@ public class PlayerFG : MonoBehaviour {
 		SpriteRenderer mySpriteRenderer = GetComponent<SpriteRenderer>();
 		if(gameObject.tag=="Player1"){
 			if(Input.GetButton("Fire")==true){
+				ak47Bullet.tag=bulletTag;
+				ak47Bullet.firedBy=firedBy;
 				if(mySpriteRenderer.flipX==true)
 					ak47Bullet.direction="left";
 				else
@@ -92,6 +101,8 @@ public class PlayerFG : MonoBehaviour {
 
 		else if(gameObject.tag=="Player2"){
 			if(Input.GetButton("Fire2")==true){
+				ak47Bullet.tag=bulletTag;
+				ak47Bullet.firedBy=firedBy;
 				if(mySpriteRenderer.flipX==true)
 					ak47Bullet.direction="left";
 				else
@@ -106,6 +117,8 @@ public class PlayerFG : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision){
 		switch(collision.gameObject.tag){
 			case "Food":_points+=collision.gameObject.GetComponent<FoodFG>().points;break;
+			case "Player1Bullet":if(gameObject.tag=="Player2") _points-=50;break;
+			case "Player2Bullet":if(gameObject.tag=="Player1") _points-=50;break;
 		}
 	}
 }
