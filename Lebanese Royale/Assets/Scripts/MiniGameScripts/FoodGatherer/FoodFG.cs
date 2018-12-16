@@ -26,6 +26,7 @@ public class FoodFG : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collision){
-		Destroy(gameObject);
+		if (collision.gameObject.tag=="Player1"||collision.gameObject.tag=="Player2")
+			Destroy(gameObject);
 	}
 }
