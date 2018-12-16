@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114866138607513496}
   m_Layer: 0
   m_Name: pencil
-  m_TagString: Untagged
+  m_TagString: Player2Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +57,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -110,7 +110,7 @@ MonoBehaviour:
   damage: 1
   speed: 5
   direction: right
-  firedBy: 
+  firedBy: Player2
 --- !u!212 &212596505417867208
 SpriteRenderer:
   m_ObjectHideFlags: 1
