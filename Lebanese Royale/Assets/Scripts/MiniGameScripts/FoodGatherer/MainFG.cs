@@ -8,6 +8,7 @@ using System.IO;
 
 public class MainFG : MonoBehaviour {
 	// Public objects
+	// Food
 	public FoodFG ba2lewa;
 	public FoodFG bread;
 	public FoodFG falefel;
@@ -17,6 +18,11 @@ public class MainFG : MonoBehaviour {
 	public FoodFG shawerma;
 	public FoodFG tabbuleh;
 	public FoodFG wings;
+	// Weapons
+	public Weapon pencil;
+	public Weapon ak47;
+	public Weapon rpg;
+
 	// Helpers
 	FoodFG[] allCuisines = new FoodFG[9];
 	public static bool isGameEnabled= true;
@@ -25,13 +31,13 @@ public class MainFG : MonoBehaviour {
 	public Text player2score;
 	public Text timeText;
 	// UI helpers
-	private float time=10f;
+	private float time=30f;
 
 	// Use this for initialization
 	void Start () {
 		isGameEnabled=true;
 		AddFoodList();
-		InvokeRepeating("SpawnFood",1,1);
+		InvokeRepeating("SpawnFood",1,3);
 	}
 	void AddFoodList(){
 		allCuisines[0]=ba2lewa;

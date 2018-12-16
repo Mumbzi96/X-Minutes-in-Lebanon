@@ -119,6 +119,8 @@ public class PlayerFG : MonoBehaviour {
 			case "Food":_points+=collision.gameObject.GetComponent<FoodFG>().points;break;
 			case "Player1Bullet":if(gameObject.tag=="Player2") _points-=50;break;
 			case "Player2Bullet":if(gameObject.tag=="Player1") _points-=50;break;
+			// case "Weapon":if(gameObject.GetComponent<Weapon>().type=="Player1") _points-=50;break;
+
 		}
 	}
 }

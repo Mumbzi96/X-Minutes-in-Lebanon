@@ -15,6 +15,9 @@ TagManager:
   - GoUp
   - GoDown
   - Food
+  - Player1Bullet
+  - Player2Bullet
+  - Weapon
   layers:
   - Default
   - TransparentFX

@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 212187750477342638}
   - component: {fileID: 50274323423010194}
   - component: {fileID: 60969477075854172}
+  - component: {fileID: 114120768100595004}
   m_Layer: 0
   m_Name: ak47
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1694706701092096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.67, y: 1.95, z: 0}
+  m_LocalPosition: {x: -2.3886366, y: -0.9597118, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -350,6 +351,18 @@ PolygonCollider2D:
       - {x: 7.8799996, y: 1.09}
       - {x: 7.89, y: 0.89}
       - {x: 7.45, y: 0.89}
+--- !u!114 &114120768100595004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1694706701092096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7db18162b809649a72f47b97ae5a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: ak47
 --- !u!212 &212187750477342638
 SpriteRenderer:
   m_ObjectHideFlags: 1
