@@ -100,6 +100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6432aa5531a312c498afda44136c0beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pencil: {fileID: 0}
+  ak47Bullet: {fileID: 114420781208612790, guid: 96d551e6840ba124288d60173b6bbcc4,
+    type: 2}
+  rocket: {fileID: 0}
 --- !u!114 &114625121296862492
 MonoBehaviour:
   m_ObjectHideFlags: 1
