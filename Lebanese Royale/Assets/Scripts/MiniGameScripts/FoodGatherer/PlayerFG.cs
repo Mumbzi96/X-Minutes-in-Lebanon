@@ -13,7 +13,9 @@ public class PlayerFG : MonoBehaviour {
         }
     }
 	float speed=7;
-
+	// Helpers
+	private bool canShoot=true;
+	private float shotTimer=0;
 	// Public GameObjects
 	public Bullet pencil;
 	public Bullet ak47Bullet;
@@ -21,15 +23,34 @@ public class PlayerFG : MonoBehaviour {
 
 	void Start(){
 	}
+	void Update(){
+		
+	}
 	void FixedUpdate(){
 		if(MainFG.isGameEnabled==true){
 			Move();
-			Shoot();			
+			ShotTracker();
+						
 		}
+		
+		
 	}
 
-
-	public void Move(){
+	private void ShotTracker(){
+		/*
+		This function checks if the user can shoot;
+		if not
+		the tracker will subtract till shooting isAllowed again
+		*/
+		switch(canShoot){
+			case true:Shoot();break;
+			case false:if(shotTimer<=0) canShoot=true;break;
+		}
+		if(shotTimer>0){
+			shotTimer-=Time.deltaTime;
+		}
+	}
+	private void Move(){
 		SpriteRenderer mySpriteRenderer = GetComponent<SpriteRenderer>();
 		if(gameObject.tag=="Player1"){
 			float x= Input.GetAxis("Horizontal");
@@ -57,16 +78,16 @@ public class PlayerFG : MonoBehaviour {
 	public void Shoot(){
 		SpriteRenderer mySpriteRenderer = GetComponent<SpriteRenderer>();
 		if(gameObject.tag=="Player1"){
-			if(Input.GetButton("Fire")==true)
-				if(mySpriteRenderer.flipX==true){
+			if(Input.GetButton("Fire")==true){
+				if(mySpriteRenderer.flipX==true)
 					ak47Bullet.direction="left";
-					Instantiate(ak47Bullet, transform.position, new Quaternion(0,0,0,0));
-				}
-			else{
-				ak47Bullet.direction="right";
+				else
+					ak47Bullet.direction="right";
+
 				Instantiate(ak47Bullet, transform.position, new Quaternion(0,0,0,0));
+				canShoot=false;
+				shotTimer=1;
 			}
-				
 		}
 
 		else if(gameObject.tag=="Player2"){
