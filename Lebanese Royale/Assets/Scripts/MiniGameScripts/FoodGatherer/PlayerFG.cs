@@ -94,16 +94,20 @@ public class PlayerFG : MonoBehaviour {
 
 	public void Shoot(){
 		SpriteRenderer mySpriteRenderer = GetComponent<SpriteRenderer>();
+		
 		if(gameObject.tag=="Player1"){
 			if(Input.GetButton("Fire")==true){
 				currentBullet.tag=bulletTag;
 				currentBullet.firedBy=firedBy;
-				if(mySpriteRenderer.flipX==true)
+				if(mySpriteRenderer.flipX==true){
 					currentBullet.direction="left";
-				else
+					Instantiate(currentBullet, new Vector3(transform.position.x-0.5f,transform.position.y,transform.position.z), new Quaternion(0,0,0,0));
+				}
+				else{
 					currentBullet.direction="right";
-
-				Instantiate(currentBullet, transform.position, new Quaternion(0,0,0,0));
+					Instantiate(currentBullet, new Vector3(transform.position.x+0.5f,transform.position.y,transform.position.z), new Quaternion(0,0,0,0));
+				}
+					
 				canShoot=false;
 				shotTimer=1;
 			}
@@ -113,12 +117,14 @@ public class PlayerFG : MonoBehaviour {
 			if(Input.GetButton("Fire2")==true){
 				currentBullet.tag=bulletTag;
 				currentBullet.firedBy=firedBy;
-				if(mySpriteRenderer.flipX==true)
+				if(mySpriteRenderer.flipX==true){
 					currentBullet.direction="left";
-				else
+					Instantiate(currentBullet, new Vector3(transform.position.x-0.5f,transform.position.y,transform.position.z), new Quaternion(0,0,0,0));
+				}
+				else{
 					currentBullet.direction="right";
-
-				Instantiate(currentBullet, transform.position, new Quaternion(0,0,0,0));
+					Instantiate(currentBullet, new Vector3(transform.position.x+0.5f,transform.position.y,transform.position.z), new Quaternion(0,0,0,0));
+				}
 				canShoot=false;
 				shotTimer=1;
 			}
