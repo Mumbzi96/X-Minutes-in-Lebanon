@@ -7,9 +7,11 @@ public class Bullet : MonoBehaviour {
 	[HideInInspector] public int speed=5;
 	[HideInInspector] public string direction="right";
 	[HideInInspector] public string firedBy;
+	private SpriteRenderer mySpriteRenderer;
 	
 	
 	void Start () {
+		mySpriteRenderer = GetComponent<SpriteRenderer>();
 		Destroy(gameObject,3);
 	}
 	
@@ -19,8 +21,8 @@ public class Bullet : MonoBehaviour {
 
 	private void Move(){
 		switch(direction){
-			case "right":transform.position += transform.right *speed* Time.deltaTime;break;
-			case "left":transform.position += -(transform.right) *speed* Time.deltaTime;break;
+			case "right":mySpriteRenderer.flipX=false;transform.position += transform.right *speed* Time.deltaTime;break;
+			case "left":mySpriteRenderer.flipX=true;transform.position += -(transform.right) *speed* Time.deltaTime;break;
 		}
 		
 	}
