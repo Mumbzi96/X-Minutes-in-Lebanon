@@ -13,6 +13,7 @@ public class PlayerFG : MonoBehaviour {
         }
     }
 	float speed=7;
+	Rigidbody2D rb;
 	// Helpers
 	private bool canShoot=true;
 	private float shotTimer=0;
@@ -20,12 +21,19 @@ public class PlayerFG : MonoBehaviour {
 	private string firedBy;
 	private string equippedWeapon;
 	private Bullet currentBullet;
+	// Better jumping
+	[Range(1,10)]
+	private float jumpVelocity=5.5f;
+	private float fallMultiplier=2.5f;
+	private float lowJumpMultiplier=2f;
+
 	// Public GameObjects
 	public Bullet pencil;
 	public Bullet ak47Bullet;
 	public Bullet rocket;
 
 	void Start(){
+		rb= GetComponent<Rigidbody2D>();
 		firedBy=gameObject.tag;
 		if (gameObject.tag=="Player1"){
 			bulletTag="Player1Bullet";
@@ -69,26 +77,46 @@ public class PlayerFG : MonoBehaviour {
 	}
 	private void Move(){
 		SpriteRenderer mySpriteRenderer = GetComponent<SpriteRenderer>();
+		
 		if(gameObject.tag=="Player1"){
+			// Movement
 			float x= Input.GetAxis("Horizontal");
 			if(x<0)
 				mySpriteRenderer.flipX=true;
 			else if(x>0)
 				mySpriteRenderer.flipX=false;
-			float y= Input.GetAxis("Vertical");
-			Vector3 nv3= new Vector3(x,y,0);
+			Vector3 nv3= new Vector3(x,0,0);
 			gameObject.transform.Translate(nv3*speed*Time.deltaTime);
+			// JUMPING
+			if(Input.GetKeyDown(KeyCode.UpArrow)&& rb.velocity.y==0){
+				rb.velocity=Vector2.up*jumpVelocity;
+			}
+			if(rb.velocity.y<0){
+				rb.velocity += Vector2.up * Physics2D.gravity.y*(fallMultiplier-1)*Time.deltaTime;
+			}
+			else if(rb.velocity.y>0 && !Input.GetKey(KeyCode.UpArrow)){
+				rb.velocity += Vector2.up * Physics2D.gravity.y*(lowJumpMultiplier-1)*Time.deltaTime;
+			}
 		}
 		else if(gameObject.tag=="Player2"){
-			float x2= Input.GetAxis("Horizontal2");
-			if(x2<0)
+			// Movement
+			float x= Input.GetAxis("Horizontal2");
+			if(x<0)
 				mySpriteRenderer.flipX=true;
-			else if(x2>0)
+			else if(x>0)
 				mySpriteRenderer.flipX=false;
-			float y2= Input.GetAxis("Vertical2");
-			Vector3 nv3= new Vector3(x2,y2,0);
+			Vector3 nv3= new Vector3(x,0,0);
 			gameObject.transform.Translate(nv3*speed*Time.deltaTime);
-
+			// JUMPING
+			if(Input.GetKeyDown(KeyCode.W)&& rb.velocity.y==0){
+				rb.velocity=Vector2.up*jumpVelocity;
+			}
+			if(rb.velocity.y<0){
+				rb.velocity += Vector2.up * Physics2D.gravity.y*(fallMultiplier-1)*Time.deltaTime;
+			}
+			else if(rb.velocity.y>0 && !Input.GetKey(KeyCode.W)){
+				rb.velocity += Vector2.up * Physics2D.gravity.y*(lowJumpMultiplier-1)*Time.deltaTime;
+			}
 		}
 	}
 
