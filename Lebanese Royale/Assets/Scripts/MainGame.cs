@@ -22,6 +22,18 @@ public class MainGame : MonoBehaviour {
 	//UI helpers
 	private static float time;
 	public static int spacer=6;
+	// Other Helpers
+	static string[] miniGames={"MenuFG","MenuFoL"};
+	static int _currentMiniGame=0;
+	public static int currentMiniGame{
+		get{
+			_currentMiniGame++;
+			if (_currentMiniGame>=miniGames.Length){
+				_currentMiniGame=0;
+			}
+			return _currentMiniGame;
+		}
+	}
 	//Static values
 	public static bool InputEnabled= true;
 	public static int tileNumbers=20;
@@ -35,8 +47,8 @@ public class MainGame : MonoBehaviour {
 			turn++;
 			if (turn>Players){
 				Save("hyye");
-				SceneManager.LoadScene("MenuFG");
 				turn=1;
+				SceneManager.LoadScene(miniGames[currentMiniGame]);
 			}
 		}
 	}
@@ -92,8 +104,6 @@ public class MainGame : MonoBehaviour {
 		}
 		//Final Map Position
 		Instantiate(FinalFloor,pos,new Quaternion(0,0,0,0));
-
-
 		Debug.Log("Added Floors");
 	}
 

@@ -102,9 +102,6 @@ public class FactOrLie: MonoBehaviour {
 
 	// Statics
 	public static void Save(){
-		// GameObject MainController= GameObject.FindWithTag("Player");
-		//  GetComponent<FactOrLie>()
-		Debug.Log(player1);
 		// Deciding scores
 		string winner;
 		if( player1>player2)

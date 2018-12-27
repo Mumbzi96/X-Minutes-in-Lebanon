@@ -5,12 +5,9 @@ using UnityEngine.UI;
 
 public class DialogueManager {
 
-	//
 	List<Dialogue> dialoguesList = new List<Dialogue>();
 	Dialogue[] dialogues;
 	private int questionCounter=-1;
-	private int numberOfQuestions=3;
-	//
 	private Dialogue _currentQuestion;
 	public Dialogue currentQuestion{
         get
