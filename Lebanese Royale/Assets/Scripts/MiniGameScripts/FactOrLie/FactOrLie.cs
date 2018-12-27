@@ -16,13 +16,17 @@ public class FactOrLie: MonoBehaviour {
 	DialogueManager dialogueManager=new DialogueManager();
 
 	void Start(){
+		dialogueManager.Randomize();
 		NextQuestion();
+		
 	}
 	
 	void NextQuestion(){
 		dialogueManager.currentQuestion=new Dialogue("NOT IMPORTANT BUT DONT DELETE",true);
 		StopAllCoroutines();
 		StartCoroutine(TypeSentence(dialogueManager.currentQuestion.question));
+		
+
     }
 
 	IEnumerator TypeSentence (string sentence){
