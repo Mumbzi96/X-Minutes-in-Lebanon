@@ -12,7 +12,5 @@ public class Dialogue {
         this.question=question;
         this.answer=answer;
     }
-    
 
-	
 }

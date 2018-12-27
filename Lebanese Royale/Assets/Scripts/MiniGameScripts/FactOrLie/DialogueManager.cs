@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Use an ArrayList too, take questions randomly, remove them from arraylist (keep them in the main array though)
-
-
 public class DialogueManager {
 
 	//
-	private Dialogue[] dialogues= new Dialogue[5];
+	List<Dialogue> dialogues = new List<Dialogue>();
 	private int questionCounter=-1;
 	//
 	private Dialogue _currentQuestion;
@@ -32,9 +29,9 @@ public class DialogueManager {
 	}
 	
 	private void AddQuestions(){
-		dialogues[0]= new Dialogue("Omar made this game",true);
-		dialogues[1]= new Dialogue("Current prime minister is Micheal Aoun",false);
-		dialogues[2]= new Dialogue("You're playing",true);
+		dialogues.Add(new Dialogue("Omar made this game",true)) ;
+		dialogues.Add(new Dialogue("Current prime minister is Micheal Aoun",false)) ;
+		dialogues.Add(new Dialogue("You're playing",true)) ;
 		_currentQuestion=dialogues[0];
 	}
 }
