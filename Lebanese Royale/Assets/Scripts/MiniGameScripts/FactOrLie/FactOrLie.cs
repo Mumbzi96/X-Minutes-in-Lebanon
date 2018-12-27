@@ -8,22 +8,36 @@ public class FactOrLie: MonoBehaviour {
 	int player1=0;
     int player2=0;
 	// Text
+	public Text currentQuestionText;
 	public Text player1score;
 	public Text player2score;
 	// Helpers
 	bool inputEnabled=true;
+	DialogueManager dialogueManager=new DialogueManager();
 
-
+	void Start(){
+		NextQuestion();
+	}
+	
 	void NextQuestion(){
-		// Let dialogue manager display the next question
-		// inputEnabled=true
+		dialogueManager.currentQuestion=new Dialogue("NOT IMPORTANT BUT DONT DELETE",true);
+		StopAllCoroutines();
+		StartCoroutine(TypeSentence(dialogueManager.currentQuestion.question));
+    }
+
+	IEnumerator TypeSentence (string sentence){
+		currentQuestionText.text="";
+		foreach (char letter in sentence.ToCharArray()){
+			currentQuestionText.text+=letter;
+			yield return null; // Waits for a single frame
+		}
+		inputEnabled=true;
 	}
 
     void Update(){
 		if (inputEnabled){
         	Answer();
 		}
-		
 		Scores();
     }
 
@@ -33,15 +47,44 @@ public class FactOrLie: MonoBehaviour {
 	}
 
     
-	// FINISH THIS FUNCTION
     void Answer(){
         if(Input.GetKey(KeyCode.LeftArrow)){
             bool answer=true;
-            if (answer==DialogueManager.currentQuestion.answer){
+            if (answer==dialogueManager.currentQuestion.answer){
                 player1+=3;
             }
             else
-            	player2+=3;
+            	player2+=1;
+			inputEnabled=false;
+			NextQuestion();
+        }
+		if(Input.GetKey(KeyCode.RightArrow)){
+            bool answer=false;
+            if (answer==dialogueManager.currentQuestion.answer){
+                player1+=3;
+            }
+            else
+            	player2+=1;
+			inputEnabled=false;
+			NextQuestion();
+        }
+		if(Input.GetKey(KeyCode.A)){
+            bool answer=true;
+            if (answer==dialogueManager.currentQuestion.answer){
+                player2+=3;
+            }
+            else
+            	player1+=1;
+			inputEnabled=false;
+			NextQuestion();
+        }
+		if(Input.GetKey(KeyCode.D)){
+            bool answer=false;
+            if (answer==dialogueManager.currentQuestion.answer){
+                player2+=3;
+            }
+            else
+            	player1+=1;
 			inputEnabled=false;
 			NextQuestion();
         }
