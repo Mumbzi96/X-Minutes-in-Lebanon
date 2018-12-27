@@ -28,20 +28,22 @@ public class DialogueManager {
 
 	public DialogueManager(){
 		AddQuestions();
-		// Randomize();
-
 	}
 	
 	private void AddQuestions(){
 		dialoguesList.Add(new Dialogue("Omar made this game",true)) ;
 		dialoguesList.Add(new Dialogue("Current prime minister is Micheal Aoun",false)) ;
 		dialoguesList.Add(new Dialogue("You're playing",true)) ;
-		dialogues= new Dialogue[numberOfQuestions];
+		dialoguesList.Add(new Dialogue("Hyye?",true)) ;
+		dialoguesList.Add(new Dialogue("Saed Al Harriri is our current prime minister?",true));
+		dialoguesList.Add(new Dialogue("Nabih Berri is leaving his office...",false));
+		dialoguesList.Add(new Dialogue("howwe?",false));
+		dialogues= new Dialogue[dialoguesList.Count];
 	}
 
 	public void Randomize(){
 		List<Dialogue> dialoguesListSorting= new List<Dialogue>(dialoguesList);
-		for (int i=0;i<numberOfQuestions;i++){
+		for (int i=0;i<dialoguesList.Count;i++){
 			/*  I'm using this condition because when the count becomes 0
 				The random value picks between (0,0) which doesn't work */
 			if (dialoguesListSorting.Count==0){
