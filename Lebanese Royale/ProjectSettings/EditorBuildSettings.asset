@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiniGames/FoodGatherer/MenuFG.unity
     guid: 31c489201776bf74ab0475ee9a22e225
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/FactOrLie/WinnerFoL.unity
+    guid: ade3d5b763b42f04785964b3b01c0e05
   m_configObjects: {}
