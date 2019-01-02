@@ -46,6 +46,13 @@ public class FactOrLie: MonoBehaviour {
 		Scores();
     }
 
+	void ResetMiniGame(){
+		player1=0;
+    	player2=0;
+		inputEnabled=true;
+		dialogueManager.Randomize();
+		NextQuestion();
+	}
 	void Scores(){
 		player1score.text="Player1: "+player1.ToString();
 		player2score.text="Player2: "+player2.ToString();
@@ -54,6 +61,7 @@ public class FactOrLie: MonoBehaviour {
 			inputEnabled= false;
 			Save();
 			SceneManager.LoadScene("WinnerFoL");
+			ResetMiniGame();
 		}
 	}
 
