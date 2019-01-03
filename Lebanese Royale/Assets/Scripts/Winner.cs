@@ -13,20 +13,12 @@ public class Winner : MonoBehaviour {
 	GUISkin skin;
 
 	void Start () {
-		skin= Resources.Load("GUISkin") as GUISkin;
 		string winner = Load();
-		WinnerText.text="Chicken Dinner Mr."+winner;
+		WinnerText.text=winner + " wins!";
 	}
 	
-	void Update () {
-		
-	}
-
-	void OnGUI(){
-		GUI.skin=skin;
-		if(GUI.Button(new Rect(Screen.width/2-(buttonWidth/2),(2*Screen.height/3)-(buttonHeight/2),buttonWidth,buttonHeight),"Go To Menu")){
-			SceneManager.LoadScene("Menu");
-		}
+	public void PlayGame(){
+		SceneManager.LoadScene("Menu");
 	}
 
 	public static string Load(){
