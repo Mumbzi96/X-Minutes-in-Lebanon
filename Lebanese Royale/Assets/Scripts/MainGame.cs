@@ -21,7 +21,7 @@ public class MainGame : MonoBehaviour {
 	public Text playerTurn;
 	//UI helpers
 	private static float time;
-	public static int spacer=6;
+	public static int spacer=20;
 	// Other Helpers
 	static string[] miniGames={"MenuFG","MenuFoL"};
 	static int _currentMiniGame=0;
