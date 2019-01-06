@@ -15,7 +15,7 @@ public class WinnerFG : MonoBehaviour {
 	}
 
 	public void PlayGame(){
-		SceneManager.LoadScene("GameScene");
+		SceneManager.LoadScene("BoardScene");
 	}
 
 	void Update () {

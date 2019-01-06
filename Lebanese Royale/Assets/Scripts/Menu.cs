@@ -14,7 +14,7 @@ public class Menu : MonoBehaviour {
 
 	public void PlayGame(){
 		Save();
-		SceneManager.LoadScene("GameScene");
+		SceneManager.LoadScene("BoardScene");
 	}
 
 
