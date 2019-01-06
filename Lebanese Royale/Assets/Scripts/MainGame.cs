@@ -22,7 +22,7 @@ public class MainGame : MonoBehaviour {
 	public Text playerTurn;
 	//UI helpers
 	private static float time;
-	public static int spacer=20;
+	public static int spacer=17;
 	// Other Helpers
 	static string[] miniGames={"MenuFG","MenuFoL"};
 	static int _currentMiniGame=0;
@@ -58,7 +58,7 @@ public class MainGame : MonoBehaviour {
 	void Start () {
 		Load();
 		SoundEffectsHelper.Instance.MakeButtonPressSound();
-		AddFloors();
+		// AddFloors();
 		// AddPlayers();
 		player1.tag="Player1";
 		player2.tag="Player2";
