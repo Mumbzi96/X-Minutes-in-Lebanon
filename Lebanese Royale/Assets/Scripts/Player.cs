@@ -21,12 +21,12 @@ public class Player : MonoBehaviour {
 	public string CityOn;
 
 	public void Move(int turn,string direction){
-		if (transform.position.x>(MainGame.spacer*MainGame.tileNumbers))
-			MainGame.SetWinner(gameObject.tag);
-		else{
+		// if (transform.position.x>(MainGame.spacer*MainGame.tileNumbers))
+		// 	MainGame.SetWinner(gameObject.tag);
+		// else{
 			MainGame.InputEnabled=false;
 			StartCoroutine(MoveIt( turn, direction));
-		}
+		// }
 	}
 	//This coroutine makes the movement an animation instead of a flash
 	private IEnumerator MoveIt(int turn,string direction){
@@ -64,11 +64,11 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision){
 		switch(collision.gameObject.tag){
-			case "FinalFloor":MainGame.SetWinner(gameObject.tag);break;
-			case "GoLeft":nextX=-MainGame.spacer;nextY=0;break;
-			case "GoUp":nextX=0;nextY=MainGame.spacer;break;
+			case "FinalFloor":points+=10;MainGame.SetWinner();break;
+			// case "GoLeft":nextX=-MainGame.spacer;nextY=0;break;
+			// case "GoUp":nextX=0;nextY=MainGame.spacer;break;
 			case "GoRight":nextX=MainGame.spacer;nextY=0;CityOn=collision.gameObject.GetComponent<Floor>().cityName;break;
-			case "GoDown":nextX=0;nextY=-MainGame.spacer;break;
+			// case "GoDown":nextX=0;nextY=-MainGame.spacer;break;
 		}
 	}
 }

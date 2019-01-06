@@ -58,12 +58,9 @@ public class MainGame : MonoBehaviour {
 	void Start () {
 		Load();
 		SoundEffectsHelper.Instance.MakeButtonPressSound();
-		// AddFloors();
-		// AddPlayers();
 		player1.tag="Player1";
 		player2.tag="Player2";
 		InputEnabled= true;
-		// InvokeRepeating("StartSimulation",2,2);
 
 	}
 
@@ -167,6 +164,7 @@ public class MainGame : MonoBehaviour {
 		transform.SetPositionAndRotation(new Vector3(pos.x,pos.y,-10),new Quaternion(0,0,0,0));
 	}
 	public void CityOn(){
+		
 		GameObject[] players= GetPlayers();
 		switch(turn){
 			case 1:cityNameText.text=players[0].GetComponent<Player>().CityOn;break;
@@ -175,7 +173,19 @@ public class MainGame : MonoBehaviour {
 	}
 
 	// Statics
-	public static void SetWinner(string winner){
+	public static void SetWinner(){
+		string winner;
+		// Getting Points
+		GameObject[] players= GetPlayers();
+		int mainp1Points=players[0].GetComponent<Player>().points;
+		int mainp2Points=players[1].GetComponent<Player>().points;
+		// Deciding winner
+		if(mainp1Points>mainp2Points)
+			winner="Player 1";
+		else if(mainp1Points<mainp2Points)
+			winner="Player 2";
+		else
+			winner="You're in Lebanon... NO ONE WINS!";
 		Save(winner);
 		SceneManager.LoadScene("Winner");
 	}

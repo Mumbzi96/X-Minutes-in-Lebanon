@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: 5
-  direction: left
+  direction: right
   firedBy: Player2
 --- !u!212 &212596505417867208
 SpriteRenderer:
