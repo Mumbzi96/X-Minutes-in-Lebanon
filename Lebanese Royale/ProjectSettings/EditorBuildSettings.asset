@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiniGames/FactOrLie/FactOrLie.unity
     guid: ab6ee60272bccae498e5aada0343a133
+  - enabled: 1
+    path: Assets/Scenes/BoardScene.unity
+    guid: 5ab2ce7b18827194eb294d9dc60a494b
   m_configObjects: {}

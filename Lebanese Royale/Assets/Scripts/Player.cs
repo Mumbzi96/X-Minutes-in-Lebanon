@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
     }
 	int nextX=MainGame.spacer;
 	int nextY=0;
+	public string CityOn;
 
 	public void Move(int turn,string direction){
 		if (transform.position.x>(MainGame.spacer*MainGame.tileNumbers))
@@ -66,7 +67,7 @@ public class Player : MonoBehaviour {
 			case "FinalFloor":MainGame.SetWinner(gameObject.tag);break;
 			case "GoLeft":nextX=-MainGame.spacer;nextY=0;break;
 			case "GoUp":nextX=0;nextY=MainGame.spacer;break;
-			case "GoRight":nextX=MainGame.spacer;nextY=0;break;
+			case "GoRight":nextX=MainGame.spacer;nextY=0;CityOn=collision.gameObject.GetComponent<Floor>().cityName;break;
 			case "GoDown":nextX=0;nextY=-MainGame.spacer;break;
 		}
 	}

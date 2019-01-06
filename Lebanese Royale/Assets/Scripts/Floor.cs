@@ -5,11 +5,12 @@ using UnityEngine;
 public class Floor : MonoBehaviour {
 	
 	// public string cityName;
-	public Floor[] cityName;
+	public string cityName;
 	//picture
 	//sound
 	
 	void Start () {
+		
 	}
 	
 	void Update () {
@@ -17,3 +18,4 @@ public class Floor : MonoBehaviour {
 
 
 }
+

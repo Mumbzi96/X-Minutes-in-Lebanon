@@ -16,8 +16,9 @@ public class MainGame : MonoBehaviour {
 	//UI objects to update
 	public Text player1score;
 	public Text player2score;
-	public Text timeText;
 	public Text diceRollText;
+	public Text cityNameText;
+	public Text timeText;
 	public Text playerTurn;
 	//UI helpers
 	private static float time;
@@ -57,7 +58,7 @@ public class MainGame : MonoBehaviour {
 	void Start () {
 		Load();
 		SoundEffectsHelper.Instance.MakeButtonPressSound();
-		// AddFloors();
+		AddFloors();
 		// AddPlayers();
 		player1.tag="Player1";
 		player2.tag="Player2";
@@ -76,30 +77,30 @@ public class MainGame : MonoBehaviour {
 		pos.Set(newX,pos.y,0);
 		//Add event Floors
 		for (int i=0;i<tileNumbers;i++){
-			if(i==2&&i!=0){
-				FloorObject.tag="GoDown";
-				Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
-				newY=pos.y -spacer;
-				pos.Set(pos.x,newY,0);
-			}
-			else if(i==5&&i!=0){
-				FloorObject.tag="GoUp";
-				Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
-				newY=pos.y +spacer;
-				pos.Set(pos.x,newY,0);
-			}
+			// if(i==2&&i!=0){
+			// 	FloorObject.tag="GoDown";
+			// 	Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
+			// 	newY=pos.y -spacer;
+			// 	pos.Set(pos.x,newY,0);
+			// }
+			// else if(i==5&&i!=0){
+			// 	FloorObject.tag="GoUp";
+			// 	Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
+			// 	newY=pos.y +spacer;
+			// 	pos.Set(pos.x,newY,0);
+			// }
 			// else if(i==6&&i!=0){
 			// 	FloorObject.tag="GoLeft";
 			// 	Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
 			// 	newX=pos.x -spacer;
 			// 	pos.Set(newX,pos.y,0);;
 			// }
-			else{
+			// else{
 				FloorObject.tag="GoRight";
 				Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
 				newX=pos.x +spacer;
 				pos.Set(newX,pos.y,0);
-			}
+			// }
 			
 		}
 		//Final Map Position
@@ -130,6 +131,7 @@ public class MainGame : MonoBehaviour {
 		Timer();
 		Scores();
 		CameraFollow();
+		CityOn();
 		if(InputEnabled==true){
 			
 			Turns();
@@ -163,6 +165,13 @@ public class MainGame : MonoBehaviour {
 		GameObject something= GameObject.FindWithTag(Turn);
 		Vector3 pos=something.transform.position;
 		transform.SetPositionAndRotation(new Vector3(pos.x,pos.y,-10),new Quaternion(0,0,0,0));
+	}
+	public void CityOn(){
+		GameObject[] players= GetPlayers();
+		switch(turn){
+			case 1:cityNameText.text=players[0].GetComponent<Player>().CityOn;break;
+			case 2:cityNameText.text=players[1].GetComponent<Player>().CityOn;break;
+		}
 	}
 
 	// Statics
@@ -223,6 +232,8 @@ public class MainGame : MonoBehaviour {
 			}
 		}
 	}
+
+
 }
 
 
