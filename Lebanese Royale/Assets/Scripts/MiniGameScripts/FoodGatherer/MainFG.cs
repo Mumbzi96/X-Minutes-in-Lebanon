@@ -32,7 +32,7 @@ public class MainFG : MonoBehaviour {
 	public Text player2score;
 	public Text timeText;
 	// UI helpers
-	private float time=30f;
+	private float time=120f;
 
 	// Use this for initialization
 	void Start () {

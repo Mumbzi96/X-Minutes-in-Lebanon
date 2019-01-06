@@ -18,6 +18,7 @@ TagManager:
   - Player1Bullet
   - Player2Bullet
   - Weapon
+  - Ground
   layers:
   - Default
   - TransparentFX

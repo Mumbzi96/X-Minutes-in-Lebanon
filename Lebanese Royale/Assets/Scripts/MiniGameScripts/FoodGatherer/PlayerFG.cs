@@ -41,6 +41,7 @@ public class PlayerFG : MonoBehaviour {
 		else if (gameObject.tag=="Player2")
 			bulletTag="Player2Bullet";
 	}
+
 	private void ChangeBullet(){
 		switch(equippedWeapon){
 			case "pencil":currentBullet=pencil;break;
@@ -49,9 +50,10 @@ public class PlayerFG : MonoBehaviour {
 		}
 
 	}
+
 	void Update(){
-		
 	}
+	
 	void FixedUpdate(){
 		if(MainFG.isGameEnabled==true){
 			Move();
@@ -75,6 +77,7 @@ public class PlayerFG : MonoBehaviour {
 			shotTimer-=Time.deltaTime;
 		}
 	}
+
 	private void Move(){
 		SpriteRenderer mySpriteRenderer = GetComponent<SpriteRenderer>();
 		
@@ -88,10 +91,11 @@ public class PlayerFG : MonoBehaviour {
 			Vector3 nv3= new Vector3(x,0,0);
 			gameObject.transform.Translate(nv3*speed*Time.deltaTime);
 			// JUMPING
+			Debug.Log( rb.velocity.y);
 			if(Input.GetKeyDown(KeyCode.UpArrow)&& rb.velocity.y==0){
 				rb.velocity=Vector2.up*jumpVelocity;
 			}
-			if(rb.velocity.y<0){
+			if(rb.velocity.y<=0){
 				rb.velocity += Vector2.up * Physics2D.gravity.y*(fallMultiplier-1)*Time.deltaTime;
 			}
 			else if(rb.velocity.y>0 && !Input.GetKey(KeyCode.UpArrow)){
@@ -158,13 +162,13 @@ public class PlayerFG : MonoBehaviour {
 			}
 		}
 	}
+
 	void OnCollisionEnter2D(Collision2D collision){
 		switch(collision.gameObject.tag){
 			case "Food":_points+=collision.gameObject.GetComponent<FoodFG>().points;break;
 			case "Player1Bullet":if(gameObject.tag=="Player2") _points-=50;break;
 			case "Player2Bullet":if(gameObject.tag=="Player1") _points-=50;break;
 			case "Weapon":equippedWeapon=collision.gameObject.GetComponent<Weapon>().type;ChangeBullet();break;
-
 		}
 	}
 }
