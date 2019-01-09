@@ -25,8 +25,6 @@ public class PlayerFG : MonoBehaviour {
 	[Range(1,10)]
 	private float jumpVelocity=6.5f;
 	private bool isJumping=false;
-	// private float fallMultiplier=2.5f;
-	// private float lowJumpMultiplier=2f;
 
 	// Public GameObjects
 	public Bullet pencil;
@@ -54,18 +52,12 @@ public class PlayerFG : MonoBehaviour {
 		}
 
 	}
-
-	void Update(){
-		
-	}
 	
 	void FixedUpdate(){
 		if(MainFG.isGameEnabled==true){
 			Move();
 			ShotTracker();
 		}
-		
-		
 	}
 
 	private void ShotTracker(){
@@ -78,9 +70,10 @@ public class PlayerFG : MonoBehaviour {
 			case true:Shoot();break;
 			case false:if(shotTimer<=0) canShoot=true;break;
 		}
-		if(shotTimer>0){
+		if(shotTimer>0)
 			shotTimer-=Time.deltaTime;
-		}
+		else
+			animator.SetBool("IsAttacking",false);
 	}
 
 	private void Move(){
@@ -106,6 +99,7 @@ public class PlayerFG : MonoBehaviour {
 		else if(gameObject.tag=="Player2"){
 			// Movement
 			float x= Input.GetAxis("Horizontal2");
+			animator.SetFloat("Speed",Mathf.Abs(x));
 			if(x<0)
 				mySpriteRenderer.flipX=true;
 			else if(x>0)
@@ -125,6 +119,7 @@ public class PlayerFG : MonoBehaviour {
 		
 		if(gameObject.tag=="Player1"){
 			if(Input.GetButton("Fire")==true){
+				animator.SetBool("IsAttacking",true);
 				currentBullet.tag=bulletTag;
 				currentBullet.firedBy=firedBy;
 				if(mySpriteRenderer.flipX==true){
@@ -135,7 +130,6 @@ public class PlayerFG : MonoBehaviour {
 					currentBullet.direction="right";
 					Instantiate(currentBullet, new Vector3(transform.position.x+0.5f,transform.position.y,transform.position.z), new Quaternion(0,0,0,0));
 				}
-					
 				canShoot=false;
 				shotTimer=1;
 			}
@@ -143,6 +137,7 @@ public class PlayerFG : MonoBehaviour {
 
 		else if(gameObject.tag=="Player2"){
 			if(Input.GetButton("Fire2")==true){
+				animator.SetBool("IsAttacking",true);
 				currentBullet.tag=bulletTag;
 				currentBullet.firedBy=firedBy;
 				if(mySpriteRenderer.flipX==true){
@@ -153,6 +148,7 @@ public class PlayerFG : MonoBehaviour {
 					currentBullet.direction="right";
 					Instantiate(currentBullet, new Vector3(transform.position.x+0.5f,transform.position.y,transform.position.z), new Quaternion(0,0,0,0));
 				}
+				
 				canShoot=false;
 				shotTimer=1;
 			}

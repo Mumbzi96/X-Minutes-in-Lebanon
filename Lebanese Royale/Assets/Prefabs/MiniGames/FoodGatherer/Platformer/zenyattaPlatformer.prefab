@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4658746290296426}
   - component: {fileID: 212919142103740778}
   - component: {fileID: 114625121296862492}
-  - component: {fileID: 61867898704494604}
   - component: {fileID: 50204490495573408}
   - component: {fileID: 114112570695772894}
+  - component: {fileID: 95536674349428266}
+  - component: {fileID: 61451864271928928}
   m_Layer: 9
   m_Name: zenyattaPlatformer
   m_TagString: Player2
@@ -38,8 +39,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1630956642954016}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.95, y: -0.08, z: 0}
-  m_LocalScale: {x: 0.06, y: 0.06, z: 1}
+  m_LocalPosition: {x: 4.36, y: 0.97, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -64,7 +65,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &61867898704494604
+--- !u!61 &61451864271928928
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,19 +77,37 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.88704085, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.78, y: 12}
+    oldSize: {x: 5.65, y: 12.35}
     newSize: {x: 12, y: 12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.225918, y: 12}
+  m_Size: {x: 5.65, y: 12.35}
   m_EdgeRadius: 0
+--- !u!95 &95536674349428266
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1630956642954016}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cd312e6b0fab5614893307645366ce30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114112570695772894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,6 +123,7 @@ MonoBehaviour:
   ak47Bullet: {fileID: 114420781208612790, guid: 96d551e6840ba124288d60173b6bbcc4,
     type: 2}
   rocket: {fileID: 114699622795750838, guid: 00603b5ae7fae0c4895f6939882bfec4, type: 2}
+  animator: {fileID: 95536674349428266}
 --- !u!114 &114625121296862492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89a3ca39b523b4891efc5cf7a02651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CityOn: 
 --- !u!212 &212919142103740778
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -149,10 +170,10 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1968531747
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c2b9646da63f6c04da7f7cc7c5045271, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 2424325a49ebc274f96c512a55fc2705, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 12, y: 12}
