@@ -24,13 +24,17 @@ public class PlayerFG : MonoBehaviour {
 	// Better jumping
 	[Range(1,10)]
 	private float jumpVelocity=5.5f;
-	private float fallMultiplier=2.5f;
-	private float lowJumpMultiplier=2f;
+	private bool isJumping=false;
+	// private float fallMultiplier=2.5f;
+	// private float lowJumpMultiplier=2f;
 
 	// Public GameObjects
 	public Bullet pencil;
 	public Bullet ak47Bullet;
 	public Bullet rocket;
+
+	// Public Helpers
+	public Animator animator;
 
 	void Start(){
 		rb= GetComponent<Rigidbody2D>();
@@ -52,6 +56,7 @@ public class PlayerFG : MonoBehaviour {
 	}
 
 	void Update(){
+		
 	}
 	
 	void FixedUpdate(){
@@ -84,22 +89,18 @@ public class PlayerFG : MonoBehaviour {
 		if(gameObject.tag=="Player1"){
 			// Movement
 			float x= Input.GetAxis("Horizontal");
+			animator.SetFloat("Speed",Mathf.Abs(x));
 			if(x<0)
 				mySpriteRenderer.flipX=true;
 			else if(x>0)
 				mySpriteRenderer.flipX=false;
+			
 			Vector3 nv3= new Vector3(x,0,0);
 			gameObject.transform.Translate(nv3*speed*Time.deltaTime);
 			// JUMPING
-			Debug.Log( rb.velocity.y);
-			if(Input.GetKeyDown(KeyCode.UpArrow)&& rb.velocity.y==0){
+			if(Input.GetKeyDown(KeyCode.UpArrow)&& animator.GetBool("IsJumping")==false){
+				animator.SetBool("IsJumping",true);
 				rb.velocity=Vector2.up*jumpVelocity;
-			}
-			if(rb.velocity.y<=0){
-				rb.velocity += Vector2.up * Physics2D.gravity.y*(fallMultiplier-1)*Time.deltaTime;
-			}
-			else if(rb.velocity.y>0 && !Input.GetKey(KeyCode.UpArrow)){
-				rb.velocity += Vector2.up * Physics2D.gravity.y*(lowJumpMultiplier-1)*Time.deltaTime;
 			}
 		}
 		else if(gameObject.tag=="Player2"){
@@ -112,14 +113,9 @@ public class PlayerFG : MonoBehaviour {
 			Vector3 nv3= new Vector3(x,0,0);
 			gameObject.transform.Translate(nv3*speed*Time.deltaTime);
 			// JUMPING
-			if(Input.GetKeyDown(KeyCode.W)&& rb.velocity.y==0){
+			if(Input.GetKeyDown(KeyCode.W)&& animator.GetBool("IsJumping")==false){
+				animator.SetBool("IsJumping",true);
 				rb.velocity=Vector2.up*jumpVelocity;
-			}
-			if(rb.velocity.y<0){
-				rb.velocity += Vector2.up * Physics2D.gravity.y*(fallMultiplier-1)*Time.deltaTime;
-			}
-			else if(rb.velocity.y>0 && !Input.GetKey(KeyCode.W)){
-				rb.velocity += Vector2.up * Physics2D.gravity.y*(lowJumpMultiplier-1)*Time.deltaTime;
 			}
 		}
 	}
@@ -164,6 +160,7 @@ public class PlayerFG : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collision){
+		animator.SetBool("IsJumping",false);
 		switch(collision.gameObject.tag){
 			case "Food":_points+=collision.gameObject.GetComponent<FoodFG>().points;break;
 			case "Player1Bullet":if(gameObject.tag=="Player2") _points-=50;break;
