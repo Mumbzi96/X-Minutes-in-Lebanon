@@ -23,7 +23,7 @@ public class PlayerFG : MonoBehaviour {
 	private Bullet currentBullet;
 	// Better jumping
 	[Range(1,10)]
-	private float jumpVelocity=5.5f;
+	private float jumpVelocity=6.5f;
 	private bool isJumping=false;
 	// private float fallMultiplier=2.5f;
 	// private float lowJumpMultiplier=2f;
