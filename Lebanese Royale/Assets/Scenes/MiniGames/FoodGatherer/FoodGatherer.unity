@@ -1560,6 +1560,7 @@ GameObject:
   - component: {fileID: 1518708979}
   - component: {fileID: 1518708978}
   - component: {fileID: 1518708981}
+  - component: {fileID: 1518708982}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1653,6 +1654,19 @@ MonoBehaviour:
   player1score: {fileID: 475430850}
   player2score: {fileID: 1332871438}
   timeText: {fileID: 1856830778}
+--- !u!114 &1518708982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1518708977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0676cc1f35d2ac34cb80c3ae99dc5083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurnSound: {fileID: 0}
+  ButtonPressSound: {fileID: 0}
 --- !u!1001 &1592258237
 Prefab:
   m_ObjectHideFlags: 0

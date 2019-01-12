@@ -123,6 +123,9 @@ MonoBehaviour:
   ak47Bullet: {fileID: 114420781208612790, guid: 96d551e6840ba124288d60173b6bbcc4,
     type: 2}
   rocket: {fileID: 114699622795750838, guid: 00603b5ae7fae0c4895f6939882bfec4, type: 2}
+  pencilSound: {fileID: 8300000, guid: e4d30e12c40f4a34094e4be82121cd9a, type: 3}
+  ak47Sound: {fileID: 8300000, guid: abe756ef92ba5034db572fc3d491cd16, type: 3}
+  rocketSound: {fileID: 8300000, guid: cf740cc8e8eea314d854bd3a076db09a, type: 3}
   animator: {fileID: 95023108715634654}
 --- !u!114 &114156062513325346
 MonoBehaviour:

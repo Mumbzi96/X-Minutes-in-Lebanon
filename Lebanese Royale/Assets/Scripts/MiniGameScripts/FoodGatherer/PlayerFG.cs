@@ -31,6 +31,11 @@ public class PlayerFG : MonoBehaviour {
 	public Bullet ak47Bullet;
 	public Bullet rocket;
 
+	// Public Sounds
+	public AudioClip pencilSound;
+	public AudioClip  ak47Sound;
+	public AudioClip  rocketSound;
+
 	// Public Helpers
 	public Animator animator;
 
@@ -130,6 +135,7 @@ public class PlayerFG : MonoBehaviour {
 					currentBullet.direction="right";
 					Instantiate(currentBullet, new Vector3(transform.position.x+0.5f,transform.position.y,transform.position.z), new Quaternion(0,0,0,0));
 				}
+				MakeBulletSound();
 				canShoot=false;
 				shotTimer=1;
 			}
@@ -148,10 +154,18 @@ public class PlayerFG : MonoBehaviour {
 					currentBullet.direction="right";
 					Instantiate(currentBullet, new Vector3(transform.position.x+0.5f,transform.position.y,transform.position.z), new Quaternion(0,0,0,0));
 				}
-				
+				MakeBulletSound();
 				canShoot=false;
 				shotTimer=1;
 			}
+		}
+	}
+
+	public void MakeBulletSound(){
+		switch(equippedWeapon){
+			case "pencil":SoundEffectsHelper.Instance.MakeSound(pencilSound,0,0,0);break;
+			case "ak47":SoundEffectsHelper.Instance.MakeSound(ak47Sound,0,0,0);break;
+			case "rpg":SoundEffectsHelper.Instance.MakeSound(rocketSound,0,0,0);break;
 		}
 	}
 
