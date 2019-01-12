@@ -96,11 +96,12 @@ public class MainFG : MonoBehaviour {
 		}
 	}
 	static GameObject[] GetPlayers(){
-		GameObject player1t= GameObject.FindWithTag("Player1");
-		GameObject player2t= GameObject.FindWithTag("Player2");
-		GameObject[] players=new GameObject[MainGame.Players];
-		players[0]=player1t;
-		players[1]=player2t;
+		// GameObject player1t= GameObject.FindWithTag("Player1");
+		// GameObject player2t= GameObject.FindWithTag("Player2");
+		// GameObject[] players=new GameObject[MainGame.Players];
+		// players[0]=player1t;
+		// players[1]=player2t;
+		GameObject[] players = new GameObject[1];
 		return players;
 	}
 	void Scores(){

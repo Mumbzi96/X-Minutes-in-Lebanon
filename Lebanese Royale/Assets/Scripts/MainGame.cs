@@ -11,15 +11,11 @@ public class MainGame : MonoBehaviour {
 	public Floor FloorObject;
 	public Floor StartFloor;
 	public Floor FinalFloor;
-	public Player player1; 
-	public Player player2; 
+	public Player player; 
 	//UI objects to update
 	public Text player1score;
 	public Text player2score;
-	public Text diceRollText;
 	public Text cityNameText;
-	public Text timeText;
-	public Text playerTurn;
 	//UI helpers
 	private static float time;
 	public static int spacer=25;
@@ -37,210 +33,122 @@ public class MainGame : MonoBehaviour {
 	}
 	//Static values
 	public static bool InputEnabled= true;
-	public static int tileNumbers=20;
-	public static int Players = 2;
-	private static int turn = 1;
-	public static string Turn{
-		get{
-			return "Player"+turn;
-		}
-		set{
-			turn++;
-			if (turn>Players){
-				Save("hyye");
-				turn=1;
-				SceneManager.LoadScene(miniGames[currentMiniGame]);
-			}
-		}
-	}
 	
 	//Functions START HERE
 	void Start () {
 		Load();
 		SoundEffectsHelper.Instance.MakeButtonPressSound();
-		player1.tag="Player1";
-		player2.tag="Player2";
+		player.tag="Player1";
 		InputEnabled= true;
 
 	}
-
-	void AddFloors(){
-		//Position numba wan
-		Vector3 pos= new Vector3(0,0);
-		//Add start Floor
-		Instantiate(StartFloor,pos,new Quaternion(0,0,0,0));
-		float newX=pos.x +spacer;
-		float newY=0;
-		pos.Set(newX,pos.y,0);
-		//Add event Floors
-		for (int i=0;i<tileNumbers;i++){
-			// if(i==2&&i!=0){
-			// 	FloorObject.tag="GoDown";
-			// 	Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
-			// 	newY=pos.y -spacer;
-			// 	pos.Set(pos.x,newY,0);
-			// }
-			// else if(i==5&&i!=0){
-			// 	FloorObject.tag="GoUp";
-			// 	Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
-			// 	newY=pos.y +spacer;
-			// 	pos.Set(pos.x,newY,0);
-			// }
-			// else if(i==6&&i!=0){
-			// 	FloorObject.tag="GoLeft";
-			// 	Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
-			// 	newX=pos.x -spacer;
-			// 	pos.Set(newX,pos.y,0);;
-			// }
-			// else{
-				FloorObject.tag="GoRight";
-				Instantiate(FloorObject,pos,new Quaternion(0,0,0,0));
-				newX=pos.x +spacer;
-				pos.Set(newX,pos.y,0);
-			// }
-			
-		}
-		//Final Map Position
-		Instantiate(FinalFloor,pos,new Quaternion(0,0,0,0));
-		Debug.Log("Added Floors");
-	}
-
-	void AddPlayers(){
-		Vector3 pos1= new Vector3(0,0);
-		Vector3 pos2= new Vector3(0,0);
-		Instantiate(player1,pos1,new Quaternion(0,0,0,0));
-		Instantiate(player2,pos2,new Quaternion(0,0,0,0));
-		Debug.Log("Added players");
-
-	}
-
-	void StartSimulation(){
-		// GameObject player1t= GameObject.FindWithTag("Player1");
-		// GameObject player2t= GameObject.FindWithTag("Player2");
-		// int turn=Random.Range(1,6);
-		// player1t.GetComponent<Player>().Move(turn,"Right");
-		// turn=Random.Range(1,6);
-		// player2t.GetComponent<Player>().Move(turn,"Right");
-		
-	}
 	
 	void Update () {
-		Timer();
 		Scores();
 		CameraFollow();
 		CityOn();
 		if(InputEnabled==true){
-			
 			Turns();
 		}
 		
 	}
 	// Mainly text updates
-	void Timer(){
-		time=Time.time;
-		string minutes = ((int)time/60).ToString();
-		string seconds = ((int)time%60).ToString();
-		timeText.text=minutes + ":" +seconds;
-	}
 	void Scores(){
 		GameObject player1t= GameObject.FindWithTag("Player1");
-		GameObject player2t= GameObject.FindWithTag("Player2");
-		playerTurn.text=Turn;
+		// GameObject player2t= GameObject.FindWithTag("Player2");
 		player1score.text="Player1: "+player1t.GetComponent<Player>().points.ToString();
-		player2score.text="Player2: "+player2t.GetComponent<Player>().points.ToString();
+		// player2score.text="Player2: "+player2t.GetComponent<Player>().points.ToString();
 	}
 	// Mainly updates with a button click 
 	void Turns(){
 		if (Input.GetKeyUp(KeyCode.Space)){
-			GameObject player= GameObject.FindWithTag(Turn);
-			int diceRoll=Random.Range(1,6);
-			diceRollText.text="Roll: "+diceRoll;
-			player.GetComponent<Player>().Move(diceRoll,"Right");
+			GameObject player= GameObject.FindWithTag("Player1");
+			// int diceRoll=Random.Range(1,6);
+			// diceRollText.text="Roll: "+diceRoll;
+			player.GetComponent<Player>().Move(3,"Right");
 		}
 	}
 	void CameraFollow(){
-		GameObject something= GameObject.FindWithTag(Turn);
+		GameObject something= GameObject.FindWithTag("Player1");
 		Vector3 pos=something.transform.position;
 		transform.SetPositionAndRotation(new Vector3(pos.x,pos.y,-10),new Quaternion(0,0,0,0));
 	}
+
 	public void CityOn(){
-		
-		GameObject[] players= GetPlayers();
-		switch(turn){
-			case 1:cityNameText.text=players[0].GetComponent<Player>().CityOn;break;
-			case 2:cityNameText.text=players[1].GetComponent<Player>().CityOn;break;
-		}
+		GameObject something= GameObject.FindWithTag("Player1");
+		cityNameText.text=something.GetComponent<Player>().CityOn;
 	}
 
 	// Statics
 	public static void SetWinner(){
-		string winner;
-		// Getting Points
-		GameObject[] players= GetPlayers();
-		int mainp1Points=players[0].GetComponent<Player>().points;
-		int mainp2Points=players[1].GetComponent<Player>().points;
-		// Deciding winner
-		if(mainp1Points>mainp2Points)
-			winner="Player 1";
-		else if(mainp1Points<mainp2Points)
-			winner="Player 2";
-		else
-			winner="You're in Lebanon... NO ONE WINS!";
-		Save(winner);
-		SceneManager.LoadScene("Winner");
+		// string winner;
+		// // Getting Points
+		// GameObject[] players= GetPlayers();
+		// int mainp1Points=players[0].GetComponent<Player>().points;
+		// int mainp2Points=players[1].GetComponent<Player>().points;
+		// // Deciding winner
+		// if(mainp1Points>mainp2Points)
+		// 	winner="Player 1";
+		// else if(mainp1Points<mainp2Points)
+		// 	winner="Player 2";
+		// else
+		// 	winner="You're in Lebanon... NO ONE WINS!";
+		// Save(winner);
+		// SceneManager.LoadScene("Winner");
 	}
 	public static void Save(string winner){
-		string savePath=Application.persistentDataPath+"/winner.dat";
-		BinaryFormatter bf = new BinaryFormatter();
-		PlayerData data = new PlayerData();
+		// string savePath=Application.persistentDataPath+"/winner.dat";
+		// BinaryFormatter bf = new BinaryFormatter();
+		// PlayerData data = new PlayerData();
 		
-		// Getting Players from the scene
-		GameObject[] players= GetPlayers();
-		// Saving Points
-		data.mainp1Points=players[0].GetComponent<Player>().points;
-		data.mainp2Points=players[1].GetComponent<Player>().points;
-		// Saving positions
-		data.p1Pos= new LastPosition(players[0].transform.position.x,players[0].transform.position.y,players[0].transform.position.z);
-		data.p2Pos= new LastPosition(players[1].transform.position.x,players[1].transform.position.y,players[1].transform.position.z);
-		// Saving other stuff
-		data.mainWinner=winner;
-		data.time=time;
-		// Dirty Work
-		using (var file = File.Create(savePath)){
-			bf.Serialize(file,data);
-		}
-	}
-	static GameObject[] GetPlayers(){
-		GameObject player1t= GameObject.FindWithTag("Player1");
-		GameObject player2t= GameObject.FindWithTag("Player2");
-		GameObject[] players=new GameObject[MainGame.Players];
-		players[0]=player1t;
-		players[1]=player2t;
-		return players;
+		// // Getting Players from the scene
+		// GameObject[] players= GetPlayers();
+		// // Saving Points
+		// data.mainp1Points=players[0].GetComponent<Player>().points;
+		// data.mainp2Points=players[1].GetComponent<Player>().points;
+		// // Saving positions
+		// data.p1Pos= new LastPosition(players[0].transform.position.x,players[0].transform.position.y,players[0].transform.position.z);
+		// data.p2Pos= new LastPosition(players[1].transform.position.x,players[1].transform.position.y,players[1].transform.position.z);
+		// // Saving other stuff
+		// data.mainWinner=winner;
+		// data.time=time;
+		// // Dirty Work
+		// using (var file = File.Create(savePath)){
+		// 	bf.Serialize(file,data);
+		// }
 	}
 
+	// static GameObject[] GetPlayers(){
+	// 	GameObject player1t= GameObject.FindWithTag("Player1");
+	// 	GameObject player2t= GameObject.FindWithTag("Player2");
+	// 	GameObject[] players=new GameObject[MainGame.Players];
+	// 	players[0]=player1t;
+	// 	players[1]=player2t;
+	// 	return players;
+	// }
+
 	public static void Load(){
-		string savePath=Application.persistentDataPath+"/winner.dat";
+		// string savePath=Application.persistentDataPath+"/winner.dat";
 		
-		if (File.Exists(savePath)){
-			BinaryFormatter bf = new BinaryFormatter();
-			using (var file = File.Open(savePath, FileMode.Open)){
-				PlayerData data = (PlayerData)bf.Deserialize(file);
-					// This "if" condition is to reset all data if its a new game
-					if(data.mainWinner=="hyye"){
-						// Getting players in the scene
-						GameObject[] players= GetPlayers();
-						// Setting Points back
-						players[0].GetComponent<Player>().points=data.mainp1Points;
-						players[1].GetComponent<Player>().points=data.mainp2Points;
-						// Setting positions back
-						players[0].transform.position= new Vector3(data.p1Pos.pX,data.p1Pos.pY,data.p1Pos.pZ);
-						players[1].transform.position= new Vector3(data.p2Pos.pX,data.p2Pos.pY,data.p2Pos.pZ);
-						// Setting time back
-						time=data.time;
-					}
-			}
-		}
+		// if (File.Exists(savePath)){
+		// 	BinaryFormatter bf = new BinaryFormatter();
+		// 	using (var file = File.Open(savePath, FileMode.Open)){
+		// 		PlayerData data = (PlayerData)bf.Deserialize(file);
+		// 			// This "if" condition is to reset all data if its a new game
+		// 			if(data.mainWinner=="hyye"){
+		// 				// Getting players in the scene
+		// 				GameObject[] players= GetPlayers();
+		// 				// Setting Points back
+		// 				players[0].GetComponent<Player>().points=data.mainp1Points;
+		// 				players[1].GetComponent<Player>().points=data.mainp2Points;
+		// 				// Setting positions back
+		// 				players[0].transform.position= new Vector3(data.p1Pos.pX,data.p1Pos.pY,data.p1Pos.pZ);
+		// 				players[1].transform.position= new Vector3(data.p2Pos.pX,data.p2Pos.pY,data.p2Pos.pZ);
+		// 				// Setting time back
+		// 				time=data.time;
+		// 			}
+		// 	}
+		// }
 	}
 
 
