@@ -5,28 +5,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
-    private int _points;
-	public int points{
-        get
-        {
-            return _points;
-        }
-        set
-        {
-            _points = value;
-        }
-    }
 	int nextX=MainGame.spacer;
 	int nextY=0;
 	public string CityOn;
 
 	public void Move(int turn,string direction){
-		// if (transform.position.x>(MainGame.spacer*MainGame.tileNumbers))
-		// 	MainGame.SetWinner(gameObject.tag);
-		// else{
 			MainGame.InputEnabled=false;
 			StartCoroutine(MoveIt( turn, direction));
-		// }
 	}
 	//This coroutine makes the movement an animation instead of a flash
 	private IEnumerator MoveIt(int turn,string direction){
@@ -55,16 +40,15 @@ public class Player : MonoBehaviour {
 		}
 		// Sound is playing
 		SoundEffectsHelper.Instance.MakeTurnSound(transform.position.x,transform.position.y,transform.position.z);
-		// MainEvents.GetEvent(gameObject.tag);
-		// MainGame.Turn="whatever";
 		MainGame.InputEnabled=true;
+		MainGame.LoadMiniGame();
 		
 
 	}
 
 	void OnCollisionEnter2D(Collision2D collision){
 		switch(collision.gameObject.tag){
-			case "FinalFloor":points+=10;MainGame.SetWinner();break;
+			case "FinalFloor":MainGame.SetWinner();break;
 			case "GoRight":nextX=MainGame.spacer;nextY=0;CityOn=collision.gameObject.GetComponent<Floor>().cityName;break;
 		}
 	}

@@ -7,6 +7,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 public class MainGame : MonoBehaviour {
+	// Points
+	public static int Player1Points;
+	public static int Player2Points;
 	//Object to instantiate at start
 	public Floor FloorObject;
 	public Floor StartFloor;
@@ -36,11 +39,13 @@ public class MainGame : MonoBehaviour {
 	
 	//Functions START HERE
 	void Start () {
-		Load();
-		SoundEffectsHelper.Instance.MakeButtonPressSound();
+		
+		Player1Points=0;
+		Player2Points=0;
 		player.tag="Player1";
 		InputEnabled= true;
-
+		SoundEffectsHelper.Instance.MakeButtonPressSound();
+		Load();
 	}
 	
 	void Update () {
@@ -54,20 +59,17 @@ public class MainGame : MonoBehaviour {
 	}
 	// Mainly text updates
 	void Scores(){
-		GameObject player1t= GameObject.FindWithTag("Player1");
-		// GameObject player2t= GameObject.FindWithTag("Player2");
-		player1score.text="Player1: "+player1t.GetComponent<Player>().points.ToString();
-		// player2score.text="Player2: "+player2t.GetComponent<Player>().points.ToString();
+		player1score.text="Player1: "+Player1Points.ToString();
+		player2score.text="Player2: "+Player2Points.ToString();
 	}
+
 	// Mainly updates with a button click 
 	void Turns(){
 		if (Input.GetKeyUp(KeyCode.Space)){
-			GameObject player= GameObject.FindWithTag("Player1");
-			// int diceRoll=Random.Range(1,6);
-			// diceRollText.text="Roll: "+diceRoll;
 			player.GetComponent<Player>().Move(3,"Right");
 		}
 	}
+
 	void CameraFollow(){
 		GameObject something= GameObject.FindWithTag("Player1");
 		Vector3 pos=something.transform.position;
@@ -79,76 +81,67 @@ public class MainGame : MonoBehaviour {
 		cityNameText.text=something.GetComponent<Player>().CityOn;
 	}
 
+	public static void LoadMiniGame(){
+		Save("hyye");
+		SceneManager.LoadScene(currentMiniGame);
+	}
+
 	// Statics
 	public static void SetWinner(){
-		// string winner;
-		// // Getting Points
-		// GameObject[] players= GetPlayers();
-		// int mainp1Points=players[0].GetComponent<Player>().points;
-		// int mainp2Points=players[1].GetComponent<Player>().points;
-		// // Deciding winner
-		// if(mainp1Points>mainp2Points)
-		// 	winner="Player 1";
-		// else if(mainp1Points<mainp2Points)
-		// 	winner="Player 2";
-		// else
-		// 	winner="You're in Lebanon... NO ONE WINS!";
-		// Save(winner);
-		// SceneManager.LoadScene("Winner");
+		string winner;
+		// Getting Points
+		int mainp1Points=Player1Points;
+		int mainp2Points=Player2Points;
+		// Deciding winner
+		if(mainp1Points>mainp2Points)
+			winner="Player 1";
+		else if(mainp1Points<mainp2Points)
+			winner="Player 2";
+		else
+			winner="You're in Lebanon... NO ONE WINS!";
+		Save(winner);
+		SceneManager.LoadScene("Winner");
 	}
 	public static void Save(string winner){
-		// string savePath=Application.persistentDataPath+"/winner.dat";
-		// BinaryFormatter bf = new BinaryFormatter();
-		// PlayerData data = new PlayerData();
+		string savePath=Application.persistentDataPath+"/winner.dat";
+		BinaryFormatter bf = new BinaryFormatter();
+		PlayerData data = new PlayerData();
+		GameObject player= GameObject.FindWithTag("Player1");
 		
-		// // Getting Players from the scene
-		// GameObject[] players= GetPlayers();
-		// // Saving Points
-		// data.mainp1Points=players[0].GetComponent<Player>().points;
-		// data.mainp2Points=players[1].GetComponent<Player>().points;
-		// // Saving positions
-		// data.p1Pos= new LastPosition(players[0].transform.position.x,players[0].transform.position.y,players[0].transform.position.z);
-		// data.p2Pos= new LastPosition(players[1].transform.position.x,players[1].transform.position.y,players[1].transform.position.z);
-		// // Saving other stuff
-		// data.mainWinner=winner;
-		// data.time=time;
-		// // Dirty Work
-		// using (var file = File.Create(savePath)){
-		// 	bf.Serialize(file,data);
-		// }
+		// Saving Points
+		data.mainp1Points=Player1Points;
+		data.mainp2Points=Player2Points;
+		// Saving position
+		data.lastPosition= new LastPosition(player.transform.position.x,player.transform.position.y,player.transform.position.z);
+		// Saving other stuff
+		data.mainWinner=winner;
+		data.time=time;
+		// Dirty Work
+		using (var file = File.Create(savePath)){
+			bf.Serialize(file,data);
+		}
 	}
 
-	// static GameObject[] GetPlayers(){
-	// 	GameObject player1t= GameObject.FindWithTag("Player1");
-	// 	GameObject player2t= GameObject.FindWithTag("Player2");
-	// 	GameObject[] players=new GameObject[MainGame.Players];
-	// 	players[0]=player1t;
-	// 	players[1]=player2t;
-	// 	return players;
-	// }
-
 	public static void Load(){
-		// string savePath=Application.persistentDataPath+"/winner.dat";
-		
-		// if (File.Exists(savePath)){
-		// 	BinaryFormatter bf = new BinaryFormatter();
-		// 	using (var file = File.Open(savePath, FileMode.Open)){
-		// 		PlayerData data = (PlayerData)bf.Deserialize(file);
-		// 			// This "if" condition is to reset all data if its a new game
-		// 			if(data.mainWinner=="hyye"){
-		// 				// Getting players in the scene
-		// 				GameObject[] players= GetPlayers();
-		// 				// Setting Points back
-		// 				players[0].GetComponent<Player>().points=data.mainp1Points;
-		// 				players[1].GetComponent<Player>().points=data.mainp2Points;
-		// 				// Setting positions back
-		// 				players[0].transform.position= new Vector3(data.p1Pos.pX,data.p1Pos.pY,data.p1Pos.pZ);
-		// 				players[1].transform.position= new Vector3(data.p2Pos.pX,data.p2Pos.pY,data.p2Pos.pZ);
-		// 				// Setting time back
-		// 				time=data.time;
-		// 			}
-		// 	}
-		// }
+		string savePath=Application.persistentDataPath+"/winner.dat";
+		GameObject player= GameObject.FindWithTag("Player1");
+
+		if (File.Exists(savePath)){
+			BinaryFormatter bf = new BinaryFormatter();
+			using (var file = File.Open(savePath, FileMode.Open)){
+				PlayerData data = (PlayerData)bf.Deserialize(file);
+					// This "if" condition is to reset all data if its a new game
+					if(data.mainWinner=="hyye"){
+						// Setting Points back
+						Player1Points=data.mainp1Points;
+						Player2Points=data.mainp2Points;
+						// Setting positions back
+						player.transform.position= new Vector3(data.lastPosition.pX,data.lastPosition.pY,data.lastPosition.pZ);
+						// Setting time back
+						time=data.time;
+					}
+			}
+		}
 	}
 
 

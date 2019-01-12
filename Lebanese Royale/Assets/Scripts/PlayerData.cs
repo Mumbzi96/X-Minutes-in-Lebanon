@@ -12,8 +12,7 @@ public class PlayerData{
 	public int lastp2Points;
 	public string lastWinner;
 	// Player Related
-	public LastPosition p1Pos;
-	public LastPosition p2Pos;
+	public LastPosition lastPosition;
 	// public float p1X,p1Y,p1Z;
 	// public float p2X,p2Y,p2Z;
 	
