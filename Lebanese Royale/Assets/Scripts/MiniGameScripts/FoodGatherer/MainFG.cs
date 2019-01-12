@@ -32,7 +32,7 @@ public class MainFG : MonoBehaviour {
 	public Text player2score;
 	public Text timeText;
 	// UI helpers
-	private float time=120f;
+	private float time=60f;
 
 	// Use this for initialization
 	void Start () {
@@ -96,12 +96,11 @@ public class MainFG : MonoBehaviour {
 		}
 	}
 	static GameObject[] GetPlayers(){
-		// GameObject player1t= GameObject.FindWithTag("Player1");
-		// GameObject player2t= GameObject.FindWithTag("Player2");
-		// GameObject[] players=new GameObject[MainGame.Players];
-		// players[0]=player1t;
-		// players[1]=player2t;
-		GameObject[] players = new GameObject[1];
+		GameObject player1t= GameObject.FindWithTag("Player1");
+		GameObject player2t= GameObject.FindWithTag("Player2");
+		GameObject[] players=new GameObject[2];
+		players[0]=player1t;
+		players[1]=player2t;
 		return players;
 	}
 	void Scores(){
