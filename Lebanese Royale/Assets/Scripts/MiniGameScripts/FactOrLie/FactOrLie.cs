@@ -17,6 +17,9 @@ public class FactOrLie: MonoBehaviour {
 	// Helpers
 	bool inputEnabled=true;
 	DialogueManager dialogueManager=new DialogueManager();
+	// Sound
+	public AudioClip correct;
+	public AudioClip wrong;
 
 	void Start(){
 		dialogueManager.Randomize();
@@ -66,43 +69,56 @@ public class FactOrLie: MonoBehaviour {
 	}
 
     void Answer(){
+		
         if(Input.GetKey(KeyCode.LeftArrow)){
             bool answer=true;
             if (answer==dialogueManager.currentQuestion.answer){
+				SoundEffectsHelper.Instance.MakeSound(correct,0,0,0);
                 player1+=3;
             }
-            else
+            else{
+				SoundEffectsHelper.Instance.MakeSound(wrong,0,0,0);
             	player2+=1;
+			}
 			inputEnabled=false;
 			NextQuestion();
         }
 		if(Input.GetKey(KeyCode.RightArrow)){
             bool answer=false;
             if (answer==dialogueManager.currentQuestion.answer){
+				SoundEffectsHelper.Instance.MakeSound(correct,0,0,0);
                 player1+=3;
             }
-            else
+            else{
+				SoundEffectsHelper.Instance.MakeSound(wrong,0,0,0);
             	player2+=1;
+			}
 			inputEnabled=false;
 			NextQuestion();
         }
 		if(Input.GetKey(KeyCode.A)){
             bool answer=true;
             if (answer==dialogueManager.currentQuestion.answer){
+				SoundEffectsHelper.Instance.MakeSound(correct,0,0,0);
                 player2+=3;
             }
-            else
+            else{
+				SoundEffectsHelper.Instance.MakeSound(wrong,0,0,0);
             	player1+=1;
+			}
 			inputEnabled=false;
 			NextQuestion();
         }
 		if(Input.GetKey(KeyCode.D)){
             bool answer=false;
             if (answer==dialogueManager.currentQuestion.answer){
+				SoundEffectsHelper.Instance.MakeSound(correct,0,0,0);
                 player2+=3;
             }
-            else
+            else{
+				SoundEffectsHelper.Instance.MakeSound(wrong,0,0,0);
             	player1+=1;
+			}
 			inputEnabled=false;
 			NextQuestion();
         }

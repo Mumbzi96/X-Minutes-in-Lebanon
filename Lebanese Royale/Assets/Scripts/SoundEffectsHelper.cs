@@ -19,7 +19,7 @@ public class SoundEffectsHelper : MonoBehaviour{
     MakeSound(TurnSound,x,y,z);
   }
 
-  private void MakeSound(AudioClip originalClip,float x, float y, float z){
+  public void MakeSound(AudioClip originalClip,float x, float y, float z){
     AudioSource.PlayClipAtPoint(originalClip, new Vector3(x,y,z));
   }
   // Using this to play sounds that don't need a certain position
