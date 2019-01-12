@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4852588425776734}
   - component: {fileID: 212317512367656316}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: scores
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ Transform:
   m_GameObject: {fileID: 1253109017628058}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.72, y: 208.3, z: -2893.8733}
-  m_LocalScale: {x: 55.728287, y: 3.7427433, z: 32.15415}
+  m_LocalScale: {x: 55.728287, y: 3.7427433, z: 1}
   m_Children: []
   m_Father: {fileID: 224502111660166050}
   m_RootOrder: 0
@@ -262,7 +262,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Player 2:'
+  m_Text: 'Player2: 0'
 --- !u!114 &114534439511783898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,7 +328,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Time: '
+  m_Text: 0:42
 --- !u!114 &114765621085064612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.06074228, g: 0.8906609, b: 0.990566, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -361,7 +361,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Tyre
 --- !u!114 &114974179850174108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -394,7 +394,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Player 1:'
+  m_Text: 'Player1: 11'
 --- !u!212 &212317512367656316
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -427,11 +427,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1585129037
-  m_SortingLayer: 3
+  m_SortingLayerID: -781106673
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b265277742c05c44caa56c5be1b1e2e4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -536,7 +536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 408.1, y: -96}
+  m_AnchoredPosition: {x: 408.09998, y: -96}
   m_SizeDelta: {x: 755.4, y: 45.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224480580924700152
