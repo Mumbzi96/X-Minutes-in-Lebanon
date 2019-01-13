@@ -29,7 +29,7 @@ public class Player : MonoBehaviour {
 		else if(direction=="Right"){
 			for(int i=1;i<=turn;i++){
 				transform.SetPositionAndRotation(new Vector3(transform.position.x+nextX,transform.position.y+nextY,0),new Quaternion(0,0,0,0));
-				 yield return new WaitForSeconds(1f);
+				 yield return new WaitForSeconds(2f);
 			}
 		}
 		else if(direction=="Down"){

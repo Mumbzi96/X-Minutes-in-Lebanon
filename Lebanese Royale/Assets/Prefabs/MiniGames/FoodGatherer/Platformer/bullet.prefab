@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114420781208612790}
   m_Layer: 0
   m_Name: bullet
-  m_TagString: Player2Bullet
+  m_TagString: Player1Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,8 +112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: 5
-  direction: right
-  firedBy: Player2
+  direction: left
+  firedBy: Player1
 --- !u!212 &212098455849975676
 SpriteRenderer:
   m_ObjectHideFlags: 1
