@@ -378,7 +378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.9, y: 16.6}
+  m_AnchoredPosition: {x: 0, y: 53}
   m_SizeDelta: {x: 1831.4, y: 569.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &389141696
@@ -402,7 +402,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d0639632935cc1d4da731716ca8760af, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
@@ -1075,6 +1075,7 @@ MonoBehaviour:
   player2score: {fileID: 700021135}
   correct: {fileID: 8300000, guid: aedd5c4cec87587488a6c8258e8379f1, type: 3}
   wrong: {fileID: 8300000, guid: f5ded99e9ae135349acdfd9a1a2f3d97, type: 3}
+  writing: {fileID: 8300000, guid: f55d5d8929a4c9e44a48cec6dbf0afad, type: 3}
 --- !u!212 &1905782430
 SpriteRenderer:
   m_ObjectHideFlags: 0

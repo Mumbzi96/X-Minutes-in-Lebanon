@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour {
 	
 	void Start () {
 		mySpriteRenderer = GetComponent<SpriteRenderer>();
-		Destroy(gameObject,3);
+		Destroy(gameObject,2);
 	}
 	
 	void Update () {
@@ -20,9 +20,10 @@ public class Bullet : MonoBehaviour {
 	}
 
 	private void Move(){
+		Vector3 nv3= new Vector3(5,0,0);
 		switch(direction){
-			case "right":mySpriteRenderer.flipX=false;transform.position += transform.right *speed* Time.deltaTime;break;
-			case "left":mySpriteRenderer.flipX=true;transform.position += -(transform.right) *speed* Time.deltaTime;break;
+			case "right":mySpriteRenderer.flipX=false;gameObject.transform.Translate(nv3*speed*Time.deltaTime);break;
+			case "left":mySpriteRenderer.flipX=true;gameObject.transform.Translate(nv3*speed*Time.deltaTime);break;
 		}
 		
 	}

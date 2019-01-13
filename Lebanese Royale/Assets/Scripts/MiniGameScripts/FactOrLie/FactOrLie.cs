@@ -20,6 +20,7 @@ public class FactOrLie: MonoBehaviour {
 	// Sound
 	public AudioClip correct;
 	public AudioClip wrong;
+	public AudioClip writing;
 
 	void Start(){
 		dialogueManager.Randomize();
@@ -35,6 +36,7 @@ public class FactOrLie: MonoBehaviour {
 
 	IEnumerator TypeSentence (string sentence){
 		currentQuestionText.text="";
+		SoundEffectsHelper.Instance.MakeSound(writing,0,0,0);
 		foreach (char letter in sentence.ToCharArray()){
 			currentQuestionText.text+=letter;
 			yield return null; // Waits for a single frame
