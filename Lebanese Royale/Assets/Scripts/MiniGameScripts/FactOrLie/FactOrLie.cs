@@ -11,6 +11,7 @@ public class FactOrLie: MonoBehaviour {
 	static int player1=0;
     static int player2=0;
 	// Text
+	public Text currentPlayer;
 	public Text currentQuestionText;
 	public Text player1score;
 	public Text player2score;
@@ -67,6 +68,7 @@ public class FactOrLie: MonoBehaviour {
 	void Scores(){
 		player1score.text="Player1: "+player1.ToString();
 		player2score.text="Player2: "+player2.ToString();
+		currentPlayer.text=CurrentPlayer;
 
 		if(player1>=10 || player2>=10){
 			inputEnabled= false;
