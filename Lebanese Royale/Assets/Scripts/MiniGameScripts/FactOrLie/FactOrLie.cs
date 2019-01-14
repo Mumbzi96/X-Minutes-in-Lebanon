@@ -15,7 +15,10 @@ public class FactOrLie: MonoBehaviour {
 	public Text player1score;
 	public Text player2score;
 	// Helpers
+	string CurrentPlayer="Player1";
 	bool inputEnabled=true;
+	bool inputEnabledP1=true;
+	bool inputEnabledP2=false;
 	DialogueManager dialogueManager=new DialogueManager();
 	// Sound
 	public AudioClip correct;
@@ -45,8 +48,11 @@ public class FactOrLie: MonoBehaviour {
 	}
 
     void Update(){
-		if (inputEnabled){
-        	Answer();
+		if(inputEnabled){
+			if (inputEnabledP1)
+        		AnswerP1();
+			if(inputEnabledP2)
+				AnswerP2();
 		}
 		Scores();
     }
@@ -69,8 +75,16 @@ public class FactOrLie: MonoBehaviour {
 			ResetMiniGame();
 		}
 	}
+	void SwitchTurns(){
+		switch(CurrentPlayer){
+			case "Player1": CurrentPlayer="Player2";;break;
+			case "Player2": CurrentPlayer="Player1";break;
+		}
+		inputEnabledP1=!inputEnabledP1;
+		inputEnabledP2=!inputEnabledP2;
+	}
 
-    void Answer(){
+    void AnswerP1(){
 		
         if(Input.GetKey(KeyCode.LeftArrow)){
             bool answer=true;
@@ -80,9 +94,10 @@ public class FactOrLie: MonoBehaviour {
             }
             else{
 				SoundEffectsHelper.Instance.MakeSound(wrong,0,0,0);
-            	player2+=1;
+            	player2+=3;
 			}
 			inputEnabled=false;
+			SwitchTurns();
 			NextQuestion();
         }
 		if(Input.GetKey(KeyCode.RightArrow)){
@@ -93,11 +108,15 @@ public class FactOrLie: MonoBehaviour {
             }
             else{
 				SoundEffectsHelper.Instance.MakeSound(wrong,0,0,0);
-            	player2+=1;
+            	player2+=3;
 			}
 			inputEnabled=false;
+			SwitchTurns();
 			NextQuestion();
         }
+    }
+
+	void AnswerP2(){
 		if(Input.GetKey(KeyCode.A)){
             bool answer=true;
             if (answer==dialogueManager.currentQuestion.answer){
@@ -106,9 +125,10 @@ public class FactOrLie: MonoBehaviour {
             }
             else{
 				SoundEffectsHelper.Instance.MakeSound(wrong,0,0,0);
-            	player1+=1;
+            	player1+=3;
 			}
 			inputEnabled=false;
+			SwitchTurns();
 			NextQuestion();
         }
 		if(Input.GetKey(KeyCode.D)){
@@ -119,13 +139,13 @@ public class FactOrLie: MonoBehaviour {
             }
             else{
 				SoundEffectsHelper.Instance.MakeSound(wrong,0,0,0);
-            	player1+=1;
+            	player1+=3;
 			}
 			inputEnabled=false;
+			SwitchTurns();
 			NextQuestion();
         }
-    }
-
+	}
 	// Statics
 	public static void Save(){
 		// Deciding scores
