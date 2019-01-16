@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class enemyRT : MonoBehaviour {
 	
-	public Bullet bullet;
+	public BulletRT bullet;
+	public bool CanBeDestroyed = false;
+	
 	
 	void Start () {
-		Destroy(gameObject,3);
-		InvokeRepeating("Shoot",1,1);
+		if(CanBeDestroyed==true)
+			Destroy(gameObject,2);
+		InvokeRepeating("Shoot",0.1f,1);
 		
 
 	}
 
 	void Shoot(){
-		Instantiate(bullet,transform.position,transform.rotation);
+		int willShoot=Random.Range(0,10);
+		if(willShoot%2==0)
+			Instantiate(bullet,transform.position,transform.rotation);
 	}
 	
 	void Update () {
@@ -22,6 +27,6 @@ public class enemyRT : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collision){
-		Destroy(gameObject);
+		// Destroy(gameObject);
 	}
 }

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 60984268641723556}
   m_Layer: 0
   m_Name: shootingGuy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,13 +35,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1527314973715218}
-  m_LocalRotation: {x: 0, y: 0, z: -0.30542105, w: 0.95221746}
-  m_LocalPosition: {x: -8.1, y: 3.35, z: 0.01}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -21.87, y: 9.869999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -35.567}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &60984268641723556
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -122,7 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7514885729c43174681b511d8916a992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 114016527709450718, guid: 460d8672b551a9a47ada79d8d1126350, type: 2}
+  bullet: {fileID: 114891226766093286, guid: 460d8672b551a9a47ada79d8d1126350, type: 2}
+  CanBeDestroyed: 1
 --- !u!212 &212118877179531570
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -155,8 +156,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1968531747
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c1fc5095c658e584d93468f43a1f12d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

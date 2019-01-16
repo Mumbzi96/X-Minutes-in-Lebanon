@@ -19,6 +19,7 @@ TagManager:
   - Player2Bullet
   - Weapon
   - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX

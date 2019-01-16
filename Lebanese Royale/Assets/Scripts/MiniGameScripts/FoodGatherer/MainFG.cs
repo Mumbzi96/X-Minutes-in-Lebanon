@@ -110,7 +110,6 @@ public class MainFG : MonoBehaviour {
 		player2score.text="Player2: "+player2t.GetComponent<PlayerFG>().points.ToString();
 	}
 
-
 	// Statics
 	public static void Save(){
 		// Deciding scores

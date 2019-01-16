@@ -23,7 +23,7 @@ public class MainGame : MonoBehaviour {
 	private static float time;
 	public static int spacer=25;
 	// Other Helpers
-	static string[] miniGames={"FoLTutorial","lebolympicsTutorial"};
+	static string[] miniGames={"FoLTutorial","lebolympicsTutorial","MenuRT"};
 	static int _currentMiniGame=0;
 	public static int currentMiniGame{
 		get{
@@ -102,6 +102,7 @@ public class MainGame : MonoBehaviour {
 		Save(winner);
 		SceneManager.LoadScene("Winner");
 	}
+	
 	public static void Save(string winner){
 		string savePath=Application.persistentDataPath+"/winner.dat";
 		BinaryFormatter bf = new BinaryFormatter();

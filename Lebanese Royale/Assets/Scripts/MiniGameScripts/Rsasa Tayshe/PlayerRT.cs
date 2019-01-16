@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerRT : MonoBehaviour {
 
 	[HideInInspector] public int health=3;
-	[HideInInspector] public int speed=3;
-
+	int speed=25;
+	
 	void Start () {
 		
 	}
@@ -15,17 +15,25 @@ public class PlayerRT : MonoBehaviour {
 		if(MainRT.inputEnabled==true)
 			Move();
 
-		if(health<=0)
+		if(health<=0){
 			MainRT.SetWinner();
+		}
+			
 	}
 
 	void Move(){
 		SpriteRenderer mySpriteRenderer = GetComponent<SpriteRenderer>();
 		
+		
 		if(gameObject.tag=="Player1"){
 			// Movement
 			float x= Input.GetAxis("Horizontal");
 			float y= Input.GetAxis("Vertical");
+			if(x<0)
+				mySpriteRenderer.flipX=true;
+			else if(x>0)
+				mySpriteRenderer.flipX=false;
+			
 			Vector3 nv3= new Vector3(x,y,0);
 			gameObject.transform.Translate(nv3*speed*Time.deltaTime);
 		}
@@ -33,6 +41,11 @@ public class PlayerRT : MonoBehaviour {
 			// Movement
 			float x= Input.GetAxis("Horizontal2");
 			float y= Input.GetAxis("Vertical2");
+			if(x<0)
+				mySpriteRenderer.flipX=false;
+			else if(x>0)
+				mySpriteRenderer.flipX=true;
+			
 			Vector3 nv3= new Vector3(x,y,0);
 			gameObject.transform.Translate(nv3*speed*Time.deltaTime);
 		}

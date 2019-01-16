@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4997397733213326}
   - component: {fileID: 212301842058570726}
   - component: {fileID: 50162921540772238}
+  - component: {fileID: 114891226766093286}
   - component: {fileID: 60215892796316114}
-  - component: {fileID: 114016527709450718}
   m_Layer: 0
   m_Name: bullet
   m_TagString: Player1Bullet
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1639188007722540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2307758, y: -0.25450903, z: 0}
+  m_LocalPosition: {x: -7.5687423, y: -1.918345, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,7 +99,7 @@ PolygonCollider2D:
       - {x: 0.26, y: -0.02}
       - {x: 0.45999998, y: 0.01}
       - {x: 0.5, y: 0.04}
---- !u!114 &114016527709450718
+--- !u!114 &114891226766093286
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,13 +107,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1639188007722540}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fa09879ab2e79642b15aef72056fd34, type: 3}
+  m_Script: {fileID: 11500000, guid: 3467ed36ecd703743b13c23b2b2563fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
   speed: 5
-  direction: left
-  firedBy: Player1
+  direction: right
+  firedBy: 
 --- !u!212 &212301842058570726
 SpriteRenderer:
   m_ObjectHideFlags: 1
