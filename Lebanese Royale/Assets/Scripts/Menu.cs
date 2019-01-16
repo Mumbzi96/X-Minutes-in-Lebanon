@@ -8,15 +8,16 @@ using System.IO;
 
 public class Menu : MonoBehaviour {
 
+	public static bool isCringeMode=true;
+
 	void Start(){
-		
 	}
 
 	public void PlayGame(){
 		Save();
+		isCringeMode=true;
 		SceneManager.LoadScene("BoardScene");
 	}
-
 
 	static void Save(){
 		string savePath=Application.persistentDataPath+"/winner.dat";
@@ -27,6 +28,11 @@ public class Menu : MonoBehaviour {
 		using (var file = File.Create(savePath)){
 			bf.Serialize(file,data);
 		}
+	}
+	
+	public void OpenMiniGame(string toPlay){
+		isCringeMode=false;
+		SceneManager.LoadScene(toPlay);
 	}
 	
 }

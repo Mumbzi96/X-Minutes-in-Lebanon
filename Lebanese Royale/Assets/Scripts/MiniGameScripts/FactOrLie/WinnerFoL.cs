@@ -17,7 +17,12 @@ public class WinnerFoL : MonoBehaviour {
 	}
 
 	public void PlayGame(){
-		SceneManager.LoadScene("BoardScene");
+		if(Menu.isCringeMode==true)
+			SceneManager.LoadScene("BoardScene");
+		else{
+			Menu.isCringeMode=false;
+			SceneManager.LoadScene("Menu");
+		}
 	}
 	
 	void Update () {
