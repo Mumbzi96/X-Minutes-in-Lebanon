@@ -9,14 +9,23 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
+    path: Assets/Scenes/INTRO.unity
+    guid: 3f1cbfac99430c145b022dd764ea78ef
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 25927dcedd629684e8f6f6b0973d6538
   - enabled: 1
+    path: Assets/Scenes/BoardScene.unity
+    guid: 5ab2ce7b18827194eb294d9dc60a494b
+  - enabled: 1
     path: Assets/Scenes/Winner.unity
     guid: 9013a4633dfd48f439fccd90314ab837
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameScene.unity
     guid: c41f01e4c097f794aaf060cae4ca35cb
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/FoodGatherer/MenuFG.unity
+    guid: 31c489201776bf74ab0475ee9a22e225
   - enabled: 1
     path: Assets/Scenes/MiniGames/FoodGatherer/FoodGatherer.unity
     guid: d8c4a0f699f86334183ae0885ad87a96
@@ -24,18 +33,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MiniGames/FoodGatherer/WinnerFG.unity
     guid: 40f127faddff99d4f806848322902650
   - enabled: 1
-    path: Assets/Scenes/MiniGames/FoodGatherer/MenuFG.unity
-    guid: 31c489201776bf74ab0475ee9a22e225
-  - enabled: 1
-    path: Assets/Scenes/MiniGames/FactOrLie/WinnerFoL.unity
-    guid: ade3d5b763b42f04785964b3b01c0e05
-  - enabled: 1
     path: Assets/Scenes/MiniGames/FactOrLie/MenuFoL.unity
     guid: f4746ba130e5bbd488cd6a47b1df56f7
   - enabled: 1
     path: Assets/Scenes/MiniGames/FactOrLie/FactOrLie.unity
     guid: ab6ee60272bccae498e5aada0343a133
   - enabled: 1
-    path: Assets/Scenes/BoardScene.unity
-    guid: 5ab2ce7b18827194eb294d9dc60a494b
+    path: Assets/Scenes/MiniGames/FactOrLie/WinnerFoL.unity
+    guid: ade3d5b763b42f04785964b3b01c0e05
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/Rsasa Tayshe/Rsasa Tayshe.unity
+    guid: 468a4a303d539c8459034e45405cea92
   m_configObjects: {}
