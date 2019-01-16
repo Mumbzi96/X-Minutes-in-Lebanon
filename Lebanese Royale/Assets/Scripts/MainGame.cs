@@ -55,8 +55,14 @@ public class MainGame : MonoBehaviour {
 		if(InputEnabled==true){
 			Turns();
 		}
+		Timer();
 		
 	}
+
+	void Timer(){
+		time+=Time.deltaTime;
+	}
+
 	// Mainly text updates
 	void Scores(){
 		player1score.text="Player1: "+Player1Points.ToString();
@@ -83,7 +89,7 @@ public class MainGame : MonoBehaviour {
 
 	public static void LoadMiniGame(){
 		Save("hyye");
-		SceneManager.LoadScene(miniGames[currentMiniGame]);
+		// SceneManager.LoadScene(miniGames[currentMiniGame]);
 	}
 
 	// Statics

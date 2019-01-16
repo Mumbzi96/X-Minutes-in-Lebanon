@@ -10,29 +10,30 @@ public class Winner : MonoBehaviour {
 	const int buttonWidth=200;
 	const int buttonHeight=84;
 	public Text WinnerText;
+	public Text TimeText;
 	GUISkin skin;
 
 	void Start () {
-		string winner = Load();
-		WinnerText.text=winner + " wins!";
+		PlayerData data = Load();
+		WinnerText.text=data.mainWinner + " wins!";
+		TimeText.text="You stayed "+data.time + " minutes in Lebanon";
 	}
 	
 	public void PlayGame(){
 		SceneManager.LoadScene("Menu");
 	}
 
-	public static string Load(){
+	public static PlayerData Load(){
 		string savePath=Application.persistentDataPath+"/winner.dat";
-		string winner="0";
+		PlayerData data= new PlayerData();
 		if (File.Exists(savePath)){
 			BinaryFormatter bf = new BinaryFormatter();
 			using (var file = File.Open(savePath, FileMode.Open)){
-				PlayerData data = (PlayerData)bf.Deserialize(file);
-				winner = data.mainWinner;
+				data = (PlayerData)bf.Deserialize(file);
 			}
-			return winner;
+			return data;
 		}
-		else return winner;
+		else return data;
 	}
 
 }
