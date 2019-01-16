@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour {
 		Vector3 nv3= new Vector3(5,0,0);
 		switch(direction){
 			case "right":mySpriteRenderer.flipX=false;gameObject.transform.Translate(nv3*speed*Time.deltaTime);break;
-			case "left":mySpriteRenderer.flipX=true;gameObject.transform.Translate(nv3*speed*Time.deltaTime);break;
+			case "left":mySpriteRenderer.flipX=true;gameObject.transform.Translate(-(nv3*speed*Time.deltaTime));break;
 		}
 		
 	}
