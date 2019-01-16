@@ -89,7 +89,7 @@ public class MainGame : MonoBehaviour {
 
 	public static void LoadMiniGame(){
 		Save("hyye");
-		// SceneManager.LoadScene(miniGames[currentMiniGame]);
+		SceneManager.LoadScene(miniGames[currentMiniGame]);
 	}
 
 	// Statics
