@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class SimpleVideoPlayer : MonoBehaviour {
 	VideoPlayer video;
+	public string nextScene;
 	// Use this for initialization
 	void Start () {
 		 video=gameObject.GetComponent<VideoPlayer>();
@@ -18,11 +19,11 @@ public class SimpleVideoPlayer : MonoBehaviour {
 	}
 
 	void OnMovieFinished(VideoPlayer player){
-		SceneManager.LoadScene("Menu");
+		SceneManager.LoadScene(nextScene);
 	}
 	
 	public void SkipScene(){
-		SceneManager.LoadScene("Menu");
+		SceneManager.LoadScene(nextScene);
 	}
 
 }

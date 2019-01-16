@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScene.unity
     guid: c41f01e4c097f794aaf060cae4ca35cb
   - enabled: 1
+    path: Assets/Scenes/MiniGames/FoodGatherer/lebolympicsTutorial.unity
+    guid: 1dcc118ca170d1f48886e71734cfcebe
+  - enabled: 1
     path: Assets/Scenes/MiniGames/FoodGatherer/MenuFG.unity
     guid: 31c489201776bf74ab0475ee9a22e225
   - enabled: 1
