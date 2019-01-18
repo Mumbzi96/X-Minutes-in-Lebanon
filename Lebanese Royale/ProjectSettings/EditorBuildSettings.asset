@@ -48,10 +48,13 @@ EditorBuildSettings:
     path: Assets/Scenes/MiniGames/FactOrLie/WinnerFoL.unity
     guid: ade3d5b763b42f04785964b3b01c0e05
   - enabled: 1
+    path: Assets/Scenes/MiniGames/Rsasa Tayshe/rsasaTaysheTutorial.unity
+    guid: 7ad61359d36f11d428c820f3f90085c8
+  - enabled: 1
     path: Assets/Scenes/MiniGames/Rsasa Tayshe/MenuRT.unity
     guid: 59666c1eb7b1bf943889dc2d84ee6c3d
   - enabled: 1
-    path: Assets/Scenes/MiniGames/Rsasa Tayshe/Rsasa Tayshe.unity
+    path: Assets/Scenes/MiniGames/Rsasa Tayshe/rsasaTayshe.unity
     guid: 468a4a303d539c8459034e45405cea92
   - enabled: 1
     path: Assets/Scenes/MiniGames/Rsasa Tayshe/WinnerRT.unity
