@@ -16,7 +16,14 @@ public class Winner : MonoBehaviour {
 	void Start () {
 		PlayerData data = Load();
 		WinnerText.text=data.mainWinner + " wins!";
+		//Time fixes
+		data.time=(int)(data.time/60);
+		if(data.time<1)
+		data.time++;
+		data.time+=5;
 		TimeText.text="You stayed "+data.time + " minutes in Lebanon";
+		
+		
 	}
 	
 	public void PlayGame(){
