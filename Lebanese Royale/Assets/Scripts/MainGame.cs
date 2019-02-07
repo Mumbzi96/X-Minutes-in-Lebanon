@@ -23,7 +23,7 @@ public class MainGame : MonoBehaviour {
 	private static float time;
 	public static int spacer=25;
 	// Other Helpers
-	static string[] miniGames={"FoLTutorial","lebolympicsTutorial","MenuRT"};
+	static string[] miniGames={"FoLTutorial","lebolympicsTutorial","rsasaTaysheTutorial"};
 	static int _currentMiniGame=0;
 	public static int currentMiniGame{
 		get{
