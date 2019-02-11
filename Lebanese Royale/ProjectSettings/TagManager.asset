@@ -3,7 +3,23 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Player1
+  - Player2
+  - FinalFloor
+  - StartFloor
+  - Undefined
+  - Startend
+  - GoRight
+  - GoLeft
+  - GoUp
+  - GoDown
+  - Food
+  - Player1Bullet
+  - Player2Bullet
+  - Weapon
+  - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -13,8 +29,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Ground
+  - Player
   - 
   - 
   - 
@@ -40,4 +56,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 3513860623
+    locked: 0
+  - name: Player
+    uniqueID: 2326435549
+    locked: 0
+  - name: UI
+    uniqueID: 2709838259
     locked: 0
