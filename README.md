@@ -13,6 +13,10 @@ Game has Lebanese theme
 Collection of mini-games <=> Each minigame has a menu Scene, main Scene, winner Scene and a tutorial scene.
 Adventure/Storytelling mode just allows playing the mini games once each and has a (SURPRISE) story... This is more about learning how to tell a "story".
 
+## How to Use
+Assuming you've already downloaded Unity. Download this project as is and locate the downloaded folder using the start screen.
+
+## Important Notes
 * Programming was very easy. I've written a document of things I learned that I will share later on.
 * Graphics & Animations were mostly free assets available online. (Will share my favorite website too).
 * Audio is also mostly free assets BUT the intros and tutorials were my idea.
